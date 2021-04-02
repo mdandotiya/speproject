@@ -3,8 +3,9 @@ package com.example.speproject.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name="admin")
+@Table(name = "admin")
 public class Admin {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")

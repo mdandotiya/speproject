@@ -21,7 +21,7 @@ public class AdminDaoHibernateImpl implements AdminDao {
     @Override
     public Admin findByusername() {
         Session currentSession = entityManager.unwrap(Session.class);
-        Query<Admin> query = currentSession.createQuery("from admin", Admin.class);
+        Query<Admin> query = currentSession.createQuery("from Admin where username='hardik'", Admin.class);
         Admin admin = query.getSingleResult();
         return admin;
     }
