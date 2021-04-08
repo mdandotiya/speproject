@@ -11,8 +11,8 @@ public class HospitalService {
     @Column(name = "id")
     private int id;
 
-    @Column(name = "docterid")
-    private int docterId;
+    @Column(name = "doctorid")
+    private int doctorId;
 
     @Column(name = "dateid")
     private int dateId;
