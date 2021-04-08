@@ -3,8 +3,9 @@ package com.example.speproject.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Ngo")
-public class Ngo {
+@Table(name = "Cleaningstaff")
+public class CleaningStaff {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -13,19 +14,10 @@ public class Ngo {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "raisedfunds")
-    private Double raisedFunds;
+    @Column(name = "floorno")
+    private String floorNo;
 
-    @Column(name = "fundid")
-    private int fundId;
-
-    public Ngo(int id, String name, Double raisedFunds) {
-        this.id = id;
-        this.name = name;
-        this.raisedFunds = raisedFunds;
-    }
-
-    public Ngo() {
+    public CleaningStaff(){
 
     }
 
@@ -45,14 +37,11 @@ public class Ngo {
         this.name = name;
     }
 
-    public Double getRaisedFunds() {
-        return raisedFunds;
+    public String getFloorNo() {
+        return floorNo;
     }
 
-    public void setRaisedFunds(Double raisedFunds) {
-        this.raisedFunds = raisedFunds;
+    public void setFloorNo(String floorNo) {
+        this.floorNo = floorNo;
     }
-
-
-
 }
