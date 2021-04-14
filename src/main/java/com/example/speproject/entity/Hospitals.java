@@ -22,6 +22,10 @@ public class Hospitals {
         this.feePerVisit = feePerVisit;
     }
 
+    public Hospitals() {
+
+    }
+
     public int getId() {
         return id;
     }
