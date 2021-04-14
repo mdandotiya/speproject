@@ -2,10 +2,12 @@ package com.example.speproject.service;
 
 import com.example.speproject.dao.HospitalRepository;
 import com.example.speproject.entity.Hospitals;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class HospitalsServiceImpl implements HospitalsService {
 
     private HospitalRepository hospitalRepository;
@@ -23,7 +25,7 @@ public class HospitalsServiceImpl implements HospitalsService {
     public Hospitals findById(int theId) {
         Optional<Hospitals> result = hospitalRepository.findById(theId);
 
-        Hospitals theHospital =null;
+        Hospitals theHospital;
 
         if(result.isPresent()){
             theHospital=result.get();
