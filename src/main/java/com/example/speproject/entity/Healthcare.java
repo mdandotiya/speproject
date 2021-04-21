@@ -1,6 +1,10 @@
 package com.example.speproject.entity;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="Healthcare")
@@ -25,6 +29,9 @@ public class Healthcare {
 
     @Column(name = "Uricacid")
     private double Uricacid;
+
+    @OneToOne(mappedBy="healthcare")
+    private Patient patients;
 
     public Healthcare(double hemoglobin, double bloodpressure, double sugar, double cholestrol, double uricacid) {
         Hemoglobin = hemoglobin;

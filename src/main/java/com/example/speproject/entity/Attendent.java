@@ -1,6 +1,7 @@
 package com.example.speproject.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="Attendent")
@@ -14,12 +15,12 @@ public class Attendent {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "patientid")
-    private int patientid;
+    @OneToMany(fetch = FetchType.LAZY,mappedBy="attendent")
+    private List<Patient> patients;
 
-    public Attendent(String name, int patientid) {
+    public Attendent(String name, List<Patient> patients) {
         this.name = name;
-        this.patientid = patientid;
+        this.patients = patients;
     }
 
     public Attendent() {
@@ -42,11 +43,11 @@ public class Attendent {
         this.name = name;
     }
 
-    public int getPatientid() {
-        return patientid;
+    public List<Patient> getPatients() {
+        return patients;
     }
 
-    public void setPatientid(int patientid) {
-        this.patientid = patientid;
+    public void setPatients(List<Patient> patients) {
+        this.patients = patients;
     }
 }

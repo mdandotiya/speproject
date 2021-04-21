@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface PatientDao {
     public List<Patient> findAll();
+    public boolean deletePatient(int id);
 }

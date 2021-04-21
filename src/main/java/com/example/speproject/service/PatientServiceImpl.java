@@ -3,7 +3,6 @@ package com.example.speproject.service;
 import com.example.speproject.dao.PatientDao;
 import com.example.speproject.entity.Patient;
 import org.springframework.stereotype.Service;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
@@ -22,5 +21,10 @@ public class PatientServiceImpl implements PatientService{
     @Override
     public List<Patient> findAll() {
         return patientDao.findAll();
+    }
+
+    @Override
+    public boolean deletePatient(int id) {
+       return patientDao.deletePatient(id);
     }
 }

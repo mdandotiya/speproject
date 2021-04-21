@@ -9,6 +9,7 @@ import javax.persistence.EntityManager;
 import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.query.Query;
+import org.springframework.transaction.annotation.Transactional;
 
 @Repository
 public class PatientDaoHibernateImpl implements PatientDao{
@@ -27,5 +28,15 @@ public class PatientDaoHibernateImpl implements PatientDao{
         patientList = query.getResultList();
         return patientList;
 
+    }
+
+    @Override
+    @Transactional
+    public boolean deletePatient(int id) {
+        Session currentSession = entityManager.unwrap(Session.class);
+        Query query = currentSession.createQuery("delete from Patient where id= :patientid");
+        query.setParameter("patientid",id);
+        query.executeUpdate();
+        return true;
     }
 }

@@ -1,5 +1,10 @@
 package com.example.speproject.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonUnwrapped;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
 
 @Entity
@@ -21,6 +26,15 @@ public class Patient {
 
     @Column(name = "contactno")
     private double contactno;
+
+    @OneToOne
+    @JoinColumn(name="id", nullable=false, insertable = false,updatable = false)
+    @JsonUnwrapped
+    private Healthcare healthcare;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="attendentid", nullable=false,insertable = false,updatable = false)
+    private Attendent attendent;
 
     public Patient(){}
 
