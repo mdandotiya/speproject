@@ -3,19 +3,21 @@ package com.example.speproject.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Complaints")
+@Table
 public class Complaints {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column
     private int id;
 
-    @Column(name = "detail")
+    @Column
     private String detail;
 
-    @Column(name = "open")
+    @Column
     private boolean open;
+
+
 
     public Complaints(int id, String detail, boolean open) {
         this.id = id;

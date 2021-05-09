@@ -1,6 +1,6 @@
 package com.example.speproject.service;
 
-import com.example.speproject.dao.HospitalRepository;
+import com.example.speproject.dao.HospitalDao;
 import com.example.speproject.entity.Hospitals;
 import org.springframework.stereotype.Service;
 
@@ -10,20 +10,20 @@ import java.util.Optional;
 @Service
 public class HospitalsServiceImpl implements HospitalsService {
 
-    private HospitalRepository hospitalRepository;
+    private HospitalDao hospitalDao;
 
-    public HospitalsServiceImpl(HospitalRepository hospitalRepository) {
-        this.hospitalRepository = hospitalRepository;
+    public HospitalsServiceImpl(HospitalDao hospitalDao) {
+        this.hospitalDao = hospitalDao;
     }
 
     @Override
     public List<Hospitals> listAllHospitals() {
-        return hospitalRepository.findAll();
+        return hospitalDao.findAll();
     }
 
     @Override
     public Hospitals findById(int theId) {
-        Optional<Hospitals> result = hospitalRepository.findById(theId);
+        Optional<Hospitals> result = hospitalDao.findById(theId);
 
         Hospitals theHospital;
 
@@ -39,11 +39,11 @@ public class HospitalsServiceImpl implements HospitalsService {
 
     @Override
     public void save(Hospitals theHospital) {
-        hospitalRepository.save(theHospital);
+        hospitalDao.save(theHospital);
     }
 
     @Override
     public void deleteById(int theId) {
-        hospitalRepository.deleteById(theId);
+        hospitalDao.deleteById(theId);
     }
 }

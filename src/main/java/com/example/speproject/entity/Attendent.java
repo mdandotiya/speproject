@@ -1,26 +1,30 @@
 package com.example.speproject.entity;
 
+import com.fasterxml.jackson.annotation.JsonUnwrapped;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 @Entity
-@Table(name="Attendent")
-public class Attendent {
+@Table
+public class Attendent implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private int id;
 
-    @Column(name = "name")
+    @Column
     private String name;
 
-    @OneToMany(fetch = FetchType.LAZY,mappedBy="attendent")
+
+    @OneToMany(fetch = FetchType.EAGER)
     private List<Patient> patients;
 
-    public Attendent(String name, List<Patient> patients) {
+    public Attendent(String name) {
         this.name = name;
-        this.patients = patients;
     }
 
     public Attendent() {
@@ -43,11 +47,8 @@ public class Attendent {
         this.name = name;
     }
 
-    public List<Patient> getPatients() {
-        return patients;
-    }
 
-    public void setPatients(List<Patient> patients) {
-        this.patients = patients;
-    }
+
+
+
 }

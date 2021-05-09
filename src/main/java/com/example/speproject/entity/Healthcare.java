@@ -4,34 +4,32 @@ import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 @Entity
-@Table(name="Healthcare")
-public class Healthcare {
+@Table
+public class Healthcare implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private int id;
 
-    @Column(name = "Hemoglobin")
+    @Column
     private double Hemoglobin;
 
-    @Column(name = "Bloodpressure")
+    @Column
     private double Bloodpressure;
 
-    @Column(name = "Sugar")
+    @Column
     private double Sugar;
 
-    @Column(name = "Cholestrol")
+    @Column
     private double Cholestrol;
 
-    @Column(name = "Uricacid")
+    @Column
     private double Uricacid;
 
-    @OneToOne(mappedBy="healthcare")
-    private Patient patients;
 
     public Healthcare(double hemoglobin, double bloodpressure, double sugar, double cholestrol, double uricacid) {
         Hemoglobin = hemoglobin;

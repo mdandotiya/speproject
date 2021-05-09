@@ -1,6 +1,10 @@
 package com.example.speproject.entity;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="Date")
@@ -20,10 +24,16 @@ public class Date {
     @Column(name = "year")
     private int year;
 
+
+
     public Date(int day, int month, int year) {
         this.day = day;
         this.month = month;
         this.year = year;
+    }
+
+    public Date() {
+
     }
 
     public int getId() {
@@ -57,4 +67,6 @@ public class Date {
     public void setYear(int year) {
         this.year = year;
     }
+
+
 }

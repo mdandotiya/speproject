@@ -1,21 +1,29 @@
 package com.example.speproject.entity;
 
+import com.fasterxml.jackson.annotation.JsonUnwrapped;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
-@Table(name="HealthEquipment")
+@Table
 public class HealthEquipment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private int id;
 
-    @Column(name = "name")
+    @Column
     private String name;
 
-    @Column(name = "availability")
+    @Column
     private int availability;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JsonUnwrapped
+    private List<Attendent> attendents;
 
     public HealthEquipment(String name, int availability) {
         this.name = name;

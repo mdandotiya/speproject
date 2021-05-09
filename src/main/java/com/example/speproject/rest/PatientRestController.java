@@ -1,5 +1,6 @@
 package com.example.speproject.rest;
 
+import com.example.speproject.JSONEntity.PatientJson;
 import com.example.speproject.entity.Patient;
 import com.example.speproject.service.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api")
@@ -29,15 +31,41 @@ public class PatientRestController {
 
     @CrossOrigin(origins = "http://localhost:3000")
     @DeleteMapping(value = "/patientdel/{id}")
-    public ResponseEntity<Integer> deletePost(@PathVariable int id) {
-
-        boolean isRemoved = patientService.deletePatient(id);
-
-        if (!isRemoved) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    public ResponseEntity<HttpStatus> deletePost(@PathVariable int id) {
+        try {
+            patientService.deletePatient(id);
+            return new ResponseEntity<>(HttpStatus.OK);
         }
+        catch(Exception e){
+                return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+    }
 
-        return new ResponseEntity<>(id, HttpStatus.OK);
+    @CrossOrigin(origins = "http://localhost:3000")
+    @PostMapping(path = "/patient",consumes = "application/JSON")
+    public PatientJson addPatient(@RequestBody PatientJson patient){
+        patient.setId(0);
+        patientService.save(patient);
+        return patient;
+    }
+
+
+    @CrossOrigin(origins = "http://localhost:3000")
+    @GetMapping("/patientById/{id}")
+    public Optional<Patient> getPatient(@PathVariable int id){
+        return patientService.getPatient(id);
+    }
+
+    @CrossOrigin(origins = "http://localhost:3000")
+    @GetMapping("/patientByAttendentId/{id}")
+    public List<Patient> getPatientByAttendent(@PathVariable int id){
+        return patientService.getPatientByAttendent(id);
+    }
+
+    @CrossOrigin(origins = "http://localhost:3000")
+    @GetMapping("/patientByRoomId/{id}")
+    public Patient getPatientByRoom(@PathVariable int id){
+        return patientService.getPatientByRoom(id);
     }
 }
 

@@ -22,6 +22,6 @@ public class AdminServiceImpl implements AdminService{
     @Override
     @Transactional
     public Admin findByusername() {
-        return adminDao.findByusername();
+        return adminDao.findAll().get(0);
     }
 }

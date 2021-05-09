@@ -1,48 +1,54 @@
 package com.example.speproject.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonUnwrapped;
+import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
+import java.io.Serializable;
+import java.util.List;
 
 @Entity
-@Table(name="patient")
-public class Patient {
+@Table
+public class Patient implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column
     private int id;
 
-    @Column(name = "name")
+    @Column
     private String name;
 
-    @Column(name = "gender")
+    @Column
     private String gender;
 
-    @Column(name = "age")
+    @Column
     private int age;
 
-    @Column(name = "contactno")
-    private double contactno;
+    @Column
+    private String contact;
+
+    @ManyToOne
+    private Attendent attendent;
 
     @OneToOne
-    @JoinColumn(name="id", nullable=false, insertable = false,updatable = false)
-    @JsonUnwrapped
+    private Room room;
+
+    @OneToOne
     private Healthcare healthcare;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="attendentid", nullable=false,insertable = false,updatable = false)
-    private Attendent attendent;
+
+    @ManyToMany
+    private List<Date> dates;
 
     public Patient(){}
 
-    public Patient(String name, String gender, int age, double contactno) {
+    public Patient(String name, String gender, int age, String contact) {
         this.name = name;
         this.gender = gender;
         this.age = age;
-        this.contactno = contactno;
+        this.contact = contact;
     }
 
     public int getId() {
@@ -77,11 +83,44 @@ public class Patient {
         this.age = age;
     }
 
-    public double getContactno() {
-        return contactno;
+    public String getContactno() {
+        return contact;
     }
 
-    public void setContactno(double contactno) {
-        this.contactno = contactno;
+    public void setContactno(String contactno) {
+        this.contact = contactno;
     }
+
+    public Attendent getAttendent() {
+        return attendent;
+    }
+
+    public void setAttendent(Attendent attendent) {
+        this.attendent = attendent;
+    }
+
+    public Room getRoom() {
+        return room;
+    }
+
+    public void setRoom(Room room) {
+        this.room = room;
+    }
+
+    public String getContact() {
+        return contact;
+    }
+
+    public void setContact(String contact) {
+        this.contact = contact;
+    }
+
+    public Healthcare getHealthcare() {
+        return healthcare;
+    }
+
+    public void setHealthcare(Healthcare healthcare) {
+        this.healthcare = healthcare;
+    }
+
 }

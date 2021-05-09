@@ -1,25 +1,25 @@
 package com.example.speproject.entity;
 
+import com.fasterxml.jackson.annotation.JsonUnwrapped;
+
 import javax.persistence.*;
 
 @Entity
-@Table(name="Chef")
+@Table
 public class Chef {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private int id;
 
-    @Column(name = "name")
+    @Column
     private String name;
 
-    @Column(name = "typeid")
-    private int typeid;
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Food food;
 
-    public Chef(String name, int typeid) {
+    public Chef(String name) {
         this.name = name;
-        this.typeid = typeid;
     }
 
     public Chef() {
@@ -42,11 +42,11 @@ public class Chef {
         this.name = name;
     }
 
-    public int getTypeid() {
-        return typeid;
+    public Food getFood() {
+        return food;
     }
 
-    public void setTypeid(int typeid) {
-        this.typeid = typeid;
+    public void setFood(Food food) {
+        this.food = food;
     }
 }

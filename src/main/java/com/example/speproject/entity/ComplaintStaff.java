@@ -1,26 +1,34 @@
 package com.example.speproject.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
-@Table(name = "Complaintstaff")
+@Table
 public class ComplaintStaff {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column
     private int id;
 
-    @Column(name = "name")
+    @Column
     private String name;
 
-    @Column(name = "opencomplaints")
-    private boolean openComplaints;
+    @Column
+    private int openComplaints;
 
-    public ComplaintStaff(int id, String name, boolean openComplaints) {
+    @ManyToMany
+    private List<Complaints> complaints;
+
+    public ComplaintStaff(int id, String name, int openComplaints) {
         this.id = id;
         this.name = name;
         this.openComplaints = openComplaints;
+    }
+
+    public ComplaintStaff() {
+
     }
 
     public int getId() {
@@ -39,11 +47,11 @@ public class ComplaintStaff {
         this.name = name;
     }
 
-    public boolean isOpenComplaints() {
+    public int isOpenComplaints() {
         return openComplaints;
     }
 
-    public void setOpenComplaints(boolean openComplaints) {
+    public void setOpenComplaints(int openComplaints) {
         this.openComplaints = openComplaints;
     }
 }

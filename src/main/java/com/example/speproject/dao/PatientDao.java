@@ -1,10 +1,7 @@
 package com.example.speproject.dao;
 
 import com.example.speproject.entity.Patient;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.List;
-
-public interface PatientDao {
-    public List<Patient> findAll();
-    public boolean deletePatient(int id);
+public interface PatientDao extends JpaRepository<Patient,Integer> {
 }

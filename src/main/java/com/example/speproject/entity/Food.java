@@ -1,21 +1,28 @@
 package com.example.speproject.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
-@Table(name="Food")
+@Table
 public class Food {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private int id;
 
-    @Column(name = "type")
+    @Column
     private String type;
+
+    @OneToMany(fetch = FetchType.EAGER)
+    private List<Chef> chefList;
 
     public Food(String type) {
         this.type = type;
+    }
+
+    public Food() {
+
     }
 
     public int getId() {
@@ -32,5 +39,13 @@ public class Food {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public List<Chef> getChefList() {
+        return chefList;
+    }
+
+    public void setChefList(List<Chef> chefList) {
+        this.chefList = chefList;
     }
 }

@@ -1,6 +1,7 @@
 package com.example.speproject.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "Cleaningstaff")
@@ -16,6 +17,9 @@ public class CleaningStaff {
 
     @Column(name = "floorno")
     private String floorNo;
+
+    @ManyToMany
+    private List<Date> date;
 
     public CleaningStaff(){
 

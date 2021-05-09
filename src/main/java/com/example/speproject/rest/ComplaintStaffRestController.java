@@ -1,7 +1,7 @@
 package com.example.speproject.rest;
 
-import com.example.speproject.entity.Attendent;
-import com.example.speproject.service.AttendentService;
+import com.example.speproject.entity.ComplaintStaff;
+import com.example.speproject.service.ComplaintStaffService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,20 +12,18 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api")
-public class AttendentRestController {
+public class ComplaintStaffRestController {
 
-    AttendentService attendentService;
+    ComplaintStaffService complaintStaffService;
 
     @Autowired
-    public AttendentRestController(AttendentService attendentService) {
-        this.attendentService = attendentService;
+    public ComplaintStaffRestController(ComplaintStaffService complaintStaffService) {
+        this.complaintStaffService = complaintStaffService;
     }
 
     @CrossOrigin(origins = "http://localhost:3000")
-    @GetMapping("/attendent")
-    public List<Attendent> getAll(){
-        return attendentService.findAll();
+    @GetMapping("/complaintStaff")
+    public List<ComplaintStaff> findAll(){
+        return complaintStaffService.findAll();
     }
-
-
 }
