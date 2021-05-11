@@ -57,4 +57,12 @@ public class HealthEquipment {
     public void setAvailability(int availability) {
         this.availability = availability;
     }
+
+    public List<Attendent> getAttendents() {
+        return attendents;
+    }
+
+    public void setAttendents(List<Attendent> attendents) {
+        this.attendents = attendents;
+    }
 }

@@ -1,5 +1,6 @@
 package com.example.speproject.rest;
 
+import com.example.speproject.JSONEntity.AssignEquipmentJson;
 import com.example.speproject.entity.HealthEquipment;
 import com.example.speproject.entity.Room;
 import com.example.speproject.service.HealthEquipmentService;
@@ -30,4 +31,12 @@ public class HealthEquipmentRestController {
         healthEquipment.setId(0);
         return healthEquipmentService.addEquipment(healthEquipment);
     }
+
+    @CrossOrigin(origins = "http://localhost:3000")
+    @PostMapping(path="/equipmentassign",consumes = "application/JSON")
+    public Optional<HealthEquipment> addEquipment(@RequestBody AssignEquipmentJson assignEquipmentJson){
+        return healthEquipmentService.assignEquipment(assignEquipmentJson);
+    }
+
+
 }
