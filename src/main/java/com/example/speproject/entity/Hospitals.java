@@ -3,17 +3,17 @@ package com.example.speproject.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Hospitals")
+@Table
 public class Hospitals {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column
     private int id;
 
-    @Column(name = "name")
+    @Column
     private String name;
 
-    @Column(name = "feepervisit")
+    @Column
     private int feePerVisit;
 
     public Hospitals(int id, String name, int feePerVisit) {

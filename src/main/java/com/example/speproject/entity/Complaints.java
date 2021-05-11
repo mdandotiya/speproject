@@ -1,6 +1,7 @@
 package com.example.speproject.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table
@@ -18,11 +19,14 @@ public class Complaints {
     private boolean open;
 
 
-
     public Complaints(int id, String detail, boolean open) {
         this.id = id;
         this.detail = detail;
         this.open = open;
+    }
+
+    public Complaints() {
+
     }
 
     public int getId() {

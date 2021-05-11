@@ -19,9 +19,12 @@ public class Attendent implements Serializable {
     @Column
     private String name;
 
+    @Column
+    private int age;
 
-    @OneToMany(fetch = FetchType.EAGER)
-    private List<Patient> patients;
+    @Column
+    private String gender;
+
 
     public Attendent(String name) {
         this.name = name;
@@ -48,7 +51,19 @@ public class Attendent implements Serializable {
     }
 
 
+    public int getAge() {
+        return age;
+    }
 
+    public void setAge(int age) {
+        this.age = age;
+    }
 
+    public String getGender() {
+        return gender;
+    }
 
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
 }

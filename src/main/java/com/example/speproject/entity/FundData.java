@@ -3,18 +3,48 @@ package com.example.speproject.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Funddata")
+@Table
 public class FundData {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column
     private int id;
 
-    @Column(name = "amount")
+    @Column
     private int amount;
 
-    @Column(name = "dateid")
-    private int dateId;
+    @OneToOne
+    private Date date;
 
+    public FundData() {
+    }
 
+    public FundData(int amount, Date date) {
+        this.amount = amount;
+        this.date = date;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
 }

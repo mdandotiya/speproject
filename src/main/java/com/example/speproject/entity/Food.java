@@ -14,9 +14,6 @@ public class Food {
     @Column
     private String type;
 
-    @OneToMany(fetch = FetchType.EAGER)
-    private List<Chef> chefList;
-
     public Food(String type) {
         this.type = type;
     }
@@ -41,11 +38,5 @@ public class Food {
         this.type = type;
     }
 
-    public List<Chef> getChefList() {
-        return chefList;
-    }
 
-    public void setChefList(List<Chef> chefList) {
-        this.chefList = chefList;
-    }
 }

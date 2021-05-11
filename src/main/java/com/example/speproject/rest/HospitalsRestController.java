@@ -2,6 +2,7 @@ package com.example.speproject.rest;
 
 import com.example.speproject.entity.Admin;
 import com.example.speproject.entity.Hospitals;
+import com.example.speproject.entity.Patient;
 import com.example.speproject.service.HospitalsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -35,6 +36,14 @@ public class HospitalsRestController {
             throw new RuntimeException("hospital doesnot exist ");
         }
         return theHospital;
+    }
+
+    @CrossOrigin(origins = "http://localhost:3000")
+    @PostMapping(path = "/hospitals",consumes = "application/JSON")
+    public Hospitals addHospital(@RequestBody Hospitals hospitals){
+        hospitals.setId(0);
+        hospitalsService.save(hospitals);
+        return hospitals;
     }
 
 }

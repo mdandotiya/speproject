@@ -4,22 +4,22 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "Cleaningstaff")
+@Table
 public class CleaningStaff {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column
     private int id;
 
-    @Column(name = "name")
+    @Column
     private String name;
 
-    @Column(name = "floorno")
+    @Column
     private String floorNo;
 
-    @ManyToMany
-    private List<Date> date;
+    @Column
+    private String weekday;
 
     public CleaningStaff(){
 
@@ -47,5 +47,13 @@ public class CleaningStaff {
 
     public void setFloorNo(String floorNo) {
         this.floorNo = floorNo;
+    }
+
+    public String getWeekday() {
+        return weekday;
+    }
+
+    public void setWeekday(String weekday) {
+        this.weekday = weekday;
     }
 }

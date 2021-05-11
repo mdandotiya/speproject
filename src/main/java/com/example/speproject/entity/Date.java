@@ -7,21 +7,21 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name="Date")
+@Table
 public class Date {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column
     private int id;
 
-    @Column(name = "day")
+    @Column
     private int day;
 
-    @Column(name = "month")
+    @Column
     private int month;
 
-    @Column(name = "year")
+    @Column
     private int year;
 
 

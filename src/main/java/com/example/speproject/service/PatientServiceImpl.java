@@ -49,27 +49,8 @@ public class PatientServiceImpl implements PatientService{
     }
 
     @Override
-    public Patient save(PatientJson patient) {
-        Attendent attendent = attendentDao.findById(patient.getAttendentid()).get();
-        Room room = roomDao.findById(patient.getRoomid()).get();
-        Healthcare healthcare = new Healthcare();
-        healthcare.setId(0);
-        healthcare.setBloodpressure(patient.getBloodpressure());
-        healthcare.setCholestrol(patient.getCholestrol());
-        healthcare.setHemoglobin(patient.getHemoglobin());
-        healthcare.setSugar(patient.getSugar());
-        healthcare.setUricacid(patient.getUricacid());
-        healthcareDao.save(healthcare);
-        Patient patient1 = new Patient();
-        patient1.setHealthcare(healthcare);
-        patient1.setName(patient.getName());
-        patient1.setId(patient.getId());
-        patient1.setAge(patient.getAge());
-        patient1.setContactno(patient.getContactno());
-        patient1.setGender(patient.getGender());
-        patient1.setAttendent(attendent);
-        patient1.setRoom(room);
-        patientDao.save(patient1);
+    public Patient save(Patient patient) {
+        patientDao.save(patient);
         return null;
     }
 
@@ -96,5 +77,11 @@ public class PatientServiceImpl implements PatientService{
         }
         return patient;
 
+    }
+
+    @Override
+    public Patient updatePatient(Patient patient) {
+        patientDao.save(patient);
+        return null;
     }
 }

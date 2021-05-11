@@ -1,23 +1,37 @@
 package com.example.speproject.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
-@Table(name = "Doctor")
+@Table
 public class Doctor {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column
     private int id;
 
-    @Column(name = "hospitalid")
-    private int hospitalId;
+    @Column
+    private String name;
 
-    @Column(name = "patientid")
-    private int patientId;
+    @Column
+    private String Specialization;
+
+    @ManyToOne
+    private Hospitals hospitals;
+
+    @OneToMany(fetch = FetchType.EAGER)
+    private List<Date> dates;
 
     public Doctor() {
+    }
+
+    public Doctor(String name, String specialization, Hospitals hospitals, List<Date> dates) {
+        this.name = name;
+        Specialization = specialization;
+        this.hospitals = hospitals;
+        this.dates = dates;
     }
 
     public int getId() {
@@ -28,19 +42,35 @@ public class Doctor {
         this.id = id;
     }
 
-    public int getHospitalId() {
-        return hospitalId;
+    public String getName() {
+        return name;
     }
 
-    public void setHospitalId(int hospitalId) {
-        this.hospitalId = hospitalId;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public int getPatientId() {
-        return patientId;
+    public String getSpecialization() {
+        return Specialization;
     }
 
-    public void setPatientId(int patientId) {
-        this.patientId = patientId;
+    public void setSpecialization(String specialization) {
+        Specialization = specialization;
+    }
+
+    public Hospitals getHospitals() {
+        return hospitals;
+    }
+
+    public void setHospitals(Hospitals hospitals) {
+        this.hospitals = hospitals;
+    }
+
+    public List<Date> getDates() {
+        return dates;
+    }
+
+    public void setDates(List<Date> dates) {
+        this.dates = dates;
     }
 }

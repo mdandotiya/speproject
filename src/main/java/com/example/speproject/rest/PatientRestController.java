@@ -43,10 +43,18 @@ public class PatientRestController {
 
     @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping(path = "/patient",consumes = "application/JSON")
-    public PatientJson addPatient(@RequestBody PatientJson patient){
+    public Patient addPatient(@RequestBody Patient patient){
         patient.setId(0);
+        patient.getHealthcare().setId(0);
         patientService.save(patient);
         return patient;
+    }
+
+    @CrossOrigin(origins="http://localhost:3000")
+    @PutMapping("/patient")
+    public Patient updatePatient(@RequestBody Patient patient){
+        return patientService.updatePatient(patient);
+
     }
 
 

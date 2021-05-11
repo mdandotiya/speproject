@@ -1,34 +1,19 @@
-package com.example.speproject.entity;
+package com.example.speproject.JSONEntity;
 
-import javax.persistence.*;
 import java.util.List;
 
-@Entity
-@Table
-public class ComplaintStaff {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column
+public class ComplaintStaffJson {
     private int id;
-
-    @Column
     private String name;
-
-    @Column
     private int openComplaints;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    private List<Complaints> complaints;
+    private List<ComplaintJson> complaintJsonList;
 
-    public ComplaintStaff(int id, String name, int openComplaints) {
+    public ComplaintStaffJson(int id, String name, int openComplaints, List<ComplaintJson> complaintJsonList) {
         this.id = id;
         this.name = name;
         this.openComplaints = openComplaints;
-    }
-
-    public ComplaintStaff() {
-
+        this.complaintJsonList = complaintJsonList;
     }
 
     public int getId() {
@@ -55,11 +40,11 @@ public class ComplaintStaff {
         this.openComplaints = openComplaints;
     }
 
-    public List<Complaints> getComplaints() {
-        return complaints;
+    public List<ComplaintJson> getComplaintJsonList() {
+        return complaintJsonList;
     }
 
-    public void setComplaints(List<Complaints> complaints) {
-        this.complaints = complaints;
+    public void setComplaintJsonList(List<ComplaintJson> complaintJsonList) {
+        this.complaintJsonList = complaintJsonList;
     }
 }

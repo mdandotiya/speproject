@@ -11,7 +11,8 @@ public interface PatientService {
     public List<Patient> findAll();
     public Optional<Patient> getPatient(int id);
     public void deletePatient(int id);
-    public Patient save(PatientJson patient);
+    public Patient save(Patient patient);
     public List<Patient> getPatientByAttendent(int id);
     public Patient getPatientByRoom(int id);
+    public Patient updatePatient(Patient patient);
 }
