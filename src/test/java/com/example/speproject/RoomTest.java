@@ -22,8 +22,17 @@ public class RoomTest {
     @Test
     public void should_find_All_Rooms(){
         List<Room> rooms = roomDao.findAll();
-        int noOfRooms = 13;
+        int noOfRooms = 4;
         Assert.assertEquals(noOfRooms,rooms.size());
+    }
+
+    @Test
+    public void deleteTest(){
+        Room room = new Room(105,"AC","No");
+        room.setId(5);
+        roomDao.save(room);
+        roomDao.delete(room);
+        Assert.assertNull(roomDao.findById(5));
     }
 
 }
