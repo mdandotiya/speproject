@@ -29,10 +29,17 @@ public class RoomTest {
     @Test
     public void deleteTest(){
         Room room = new Room(105,"AC","No");
-        room.setId(5);
         roomDao.save(room);
-        roomDao.delete(room);
-        Assert.assertFalse(roomDao.findById(5).isPresent());
+        int id=0;
+        List<Room> rooms = roomDao.findAll();
+        for(int i=0;i<rooms.size();i++){
+            if(rooms.get(i).getRoomid() == room.getRoomid()){
+                id = rooms.get(i).getId();
+                roomDao.deleteById(rooms.get(i).getId());
+                break;
+            }
+        }
+        Assert.assertFalse(roomDao.findById(id).isPresent());
     }
 
 }
