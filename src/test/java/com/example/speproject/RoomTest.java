@@ -6,7 +6,6 @@ import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -21,6 +20,13 @@ public class RoomTest {
     private RoomDao roomDao;
 
     @Test
+    public void should_find_All_Rooms(){
+        List<Room> rooms = roomDao.findAll();
+        int noOfRooms = 11;
+        Assert.assertEquals(noOfRooms,rooms.size());
+    }
+
+    @Test
     public void testSaveRoom(){
         Room room = new Room(101,"AC","No");
         room.setId(15);
@@ -31,12 +37,6 @@ public class RoomTest {
         });
     }
 
-    @Test
-    public void should_find_All_Rooms(){
-        List<Room> rooms = roomDao.findAll();
-        int noOfRooms = 11;
-        Assert.assertEquals(noOfRooms,rooms.size());
-    }
 
     @Test
     public void testDeleteRoom(){
