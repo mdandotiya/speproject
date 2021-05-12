@@ -89,6 +89,21 @@ public class SPETest {
         Assert.assertTrue(chefDao.findById(chef.getId()).isPresent());
     }
 
+    @Test
+    public void deleteChefTest(){
+        List<Food> foods = foodDao.findAll();
+        Chef chef = new Chef("Sundar Lal",foods.get(0));
+        chefDao.save(chef);
+        List<Chef> chefs = chefDao.findAll();
+        for(int i=0;i<chefs.size();i++){
+            if(chefs.get(i).getName()==chef.getName()){
+                chef.setId(chefs.get(i).getId());
+            }
+        }
+        chefDao.deleteById(chef.getId());
+        Assert.assertFalse(chefDao.findById(chef.getId()).isPresent());
+    }
+
 
 
 }
