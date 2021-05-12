@@ -14,7 +14,7 @@ import java.util.List;
 
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = RoomTest.class)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class RoomTest {
 
     @Autowired
