@@ -22,28 +22,8 @@ public class RoomTest {
     @Test
     public void should_find_All_Rooms(){
         List<Room> rooms = roomDao.findAll();
-        int noOfRooms = 11;
+        int noOfRooms = 13;
         Assert.assertEquals(noOfRooms,rooms.size());
     }
 
-    @Test
-    public void testSaveRoom(){
-        Room room = new Room(101,"AC","No");
-        room.setId(15);
-        roomDao.save(room);
-        roomDao.findById(15).map(newRoom ->{
-            Assert.assertEquals(101,newRoom.getRoomid());
-            return true;
-        });
-    }
-
-
-    @Test
-    public void testDeleteRoom(){
-        Room room = new Room(202,"AC","No");
-        room.setId(16);
-        roomDao.save(room);
-        roomDao.deleteById(16);
-        Assert.assertNull(roomDao.findById(16));
-    }
 }
