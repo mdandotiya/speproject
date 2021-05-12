@@ -25,6 +25,12 @@ public class CleaningStaff {
 
     }
 
+    public CleaningStaff(String name, String floorNo, String weekday) {
+        this.name = name;
+        this.floorNo = floorNo;
+        this.weekday = weekday;
+    }
+
     public int getId() {
         return id;
     }
