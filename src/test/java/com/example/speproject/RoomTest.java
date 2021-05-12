@@ -15,7 +15,6 @@ import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = RoomTest.class)
-@DataJpaTest
 public class RoomTest {
 
     @Autowired
