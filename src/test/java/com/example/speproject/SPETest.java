@@ -29,6 +29,10 @@ public class SPETest {
     @Autowired
     private FoodDao foodDao;
 
+    @Autowired
+    private AttendentDao attendentDao;
+
+
     @Test
     public void should_find_All_Rooms(){
         List<Room> rooms = roomDao.findAll();
@@ -102,6 +106,20 @@ public class SPETest {
         }
         chefDao.deleteById(chef.getId());
         Assert.assertFalse(chefDao.findById(chef.getId()).isPresent());
+    }
+
+
+    @Test
+    public void findAttendentTest(){
+        List<Attendent> attendentList = attendentDao.findAll();
+        Assert.assertTrue(attendentDao.findById(attendentList.get(0).getId()).isPresent());
+    }
+
+    @Test
+    public void deleteAttendentTest(){
+        List<Attendent> attendentList = attendentDao.findAll();
+        attendentDao.deleteById(attendentList.get(0).getId());
+        Assert.assertFalse(attendentDao.findById(attendentList.get(0).getId()).isPresent());
     }
 
 
