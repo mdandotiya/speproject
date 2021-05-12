@@ -1,14 +1,12 @@
 package com.example.speproject.service;
 
+import com.example.speproject.JSONEntity.DateJson;
 import com.example.speproject.JSONEntity.PatientJson;
 import com.example.speproject.dao.AttendentDao;
 import com.example.speproject.dao.HealthcareDao;
 import com.example.speproject.dao.PatientDao;
 import com.example.speproject.dao.RoomDao;
-import com.example.speproject.entity.Attendent;
-import com.example.speproject.entity.Healthcare;
-import com.example.speproject.entity.Patient;
-import com.example.speproject.entity.Room;
+import com.example.speproject.entity.*;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -49,8 +47,7 @@ public class PatientServiceImpl implements PatientService{
     }
 
     @Override
-    public Patient save(Patient patient) {
-        patientDao.save(patient);
+    public Patient save(PatientJson patientJson) {
         return null;
     }
 
@@ -82,6 +79,11 @@ public class PatientServiceImpl implements PatientService{
     @Override
     public Patient updatePatient(Patient patient) {
         patientDao.save(patient);
+        return null;
+    }
+
+    @Override
+    public Date saveDate(List<String> date) {
         return null;
     }
 }

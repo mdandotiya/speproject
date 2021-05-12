@@ -1,5 +1,6 @@
 package com.example.speproject.rest;
 
+import com.example.speproject.JSONEntity.HealthcareJson;
 import com.example.speproject.entity.Healthcare;
 import com.example.speproject.service.HealthcareService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,9 +21,8 @@ public class HealthcareRestController {
 
     @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("/healthcare")
-    public List<Healthcare> save(@RequestBody Healthcare healthcare){
-        healthcare.setId(0);
-        healthcareService.addHealth(healthcare);
+    public List<Healthcare> save(@RequestBody HealthcareJson healthcareJson){
+        healthcareService.addHealth(healthcareJson);
         return null;
     }
 }

@@ -1,6 +1,8 @@
 package com.example.speproject.rest;
 
+import com.example.speproject.JSONEntity.DateJson;
 import com.example.speproject.JSONEntity.PatientJson;
+import com.example.speproject.entity.Date;
 import com.example.speproject.entity.Patient;
 import com.example.speproject.service.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,12 +44,10 @@ public class PatientRestController {
     }
 
     @CrossOrigin(origins = "http://localhost:3000")
-    @PostMapping(path = "/patient",consumes = "application/JSON")
-    public Patient addPatient(@RequestBody Patient patient){
-        patient.setId(0);
-        patient.getHealthcare().setId(0);
-        patientService.save(patient);
-        return patient;
+    @PostMapping(path = "/date",consumes = "application/JSON")
+    public Date addDate(@RequestBody List<String> date){
+        patientService.saveDate(date);
+        return null;
     }
 
     @CrossOrigin(origins="http://localhost:3000")

@@ -1,5 +1,6 @@
 package com.example.speproject.service;
 
+import com.example.speproject.JSONEntity.HealthcareJson;
 import com.example.speproject.dao.HealthcareDao;
 import com.example.speproject.entity.Healthcare;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,8 +30,7 @@ public class HealthcareServiceImpl implements HealthcareService{
     }
 
     @Override
-    public Optional<Healthcare> addHealth(Healthcare healthcare) {
-        healthcareDao.save(healthcare);
+    public Optional<Healthcare> addHealth(HealthcareJson healthcareJson) {
         return Optional.empty();
     }
 

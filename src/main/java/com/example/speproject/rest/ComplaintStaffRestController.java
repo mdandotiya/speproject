@@ -6,6 +6,8 @@ import com.example.speproject.entity.ComplaintStaff;
 import com.example.speproject.entity.Complaints;
 import com.example.speproject.entity.Patient;
 import com.example.speproject.service.ComplaintStaffService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,6 +17,12 @@ import java.util.List;
 @RestController
 @RequestMapping("/api")
 public class ComplaintStaffRestController {
+
+    private static Logger logger = LoggerFactory.getLogger(ComplaintStaffRestController.class);
+
+    public void log(){
+        logger.info("log4j is work");
+    }
 
     ComplaintStaffService complaintStaffService;
 
