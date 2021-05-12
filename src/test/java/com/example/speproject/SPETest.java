@@ -22,7 +22,7 @@ public class SPETest {
     private RoomDao roomDao;
 
     @Autowired
-    CleaningStaffDao cleaningStaffDao;
+    private CleaningStaffDao cleaningStaffDao;
 
     @Test
     public void should_find_All_Rooms(){
@@ -47,14 +47,14 @@ public class SPETest {
         Assert.assertFalse(roomDao.findById(id).isPresent());
     }
 
-    @org.junit.Test
+    @Test
     public void testAllStaff(){
         List<CleaningStaff> cleaningStaffList = cleaningStaffDao.findAll();
         int noOfStaff = 3;
         Assert.assertEquals(noOfStaff,cleaningStaffList.size());
     }
 
-    @org.junit.Test
+    @Test
     public void deleteStaffTest(){
         CleaningStaff cleaningStaff = new CleaningStaff("4th","Surendra Kumar","TTS");
         cleaningStaffDao.save(cleaningStaff);
