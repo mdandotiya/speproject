@@ -1,0 +1,12 @@
+SET GLOBAL validate_password.length = 4;
+SET GLOBAL validate_password_length = 4;
+SET GLOBAL validate_password.number_count=0;
+SET GLOBAL validate_password_number_count=0;
+SET GLOBAL validate_password.mixed_case_count=0;
+SET GLOBAL validate_password_mixed_case_count=0;
+SET GLOBAL validate_password.special_char_count=0;
+SET GLOBAL validate_password_special_char_count=0;
+CREATE USER 'oldagemanagement'@'localhost' IDENTIFIED BY 'oldAgePass';
+create database oldagemanagement;
+GRANT ALL PRIVILEGES ON oldagemanagement.* TO 'oldagemanagement'@'localhost';
+FLUSH PRIVILEGES;

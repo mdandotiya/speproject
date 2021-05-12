@@ -2,6 +2,7 @@ package com.example.speproject;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.ScopeMetadata;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
@@ -11,6 +12,7 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
+import javax.sql.DataSource;
 import java.util.Arrays;
 import java.util.Collections;
 
@@ -33,6 +35,20 @@ public class SpeprojectApplication {
 		FilterRegistrationBean<CorsFilter> bean = new FilterRegistrationBean<>(new CorsFilter(source));
 		bean.setOrder(Ordered.HIGHEST_PRECEDENCE);
 		return bean;
+	}
+	@Bean
+	public DataSource getDataSource() {
+		DataSourceBuilder dataSourceBuilder = DataSourceBuilder.create();
+		dataSourceBuilder.driverClassName("com.mysql.cj.jdbc.Driver");
+		String url = System.getenv("DATABASE_HOST");
+		if(url !=null){
+			dataSourceBuilder.url("jdbc:mysql://mysql-db-oldage:3306/oldagemanagement?createDatabaseIfNotExist=true?useSSL=false&allowPublicKeyRetrieval=true&autoReconnect=true&failOverReadOnly=false&maxReconnects=10");
+		}else{
+			dataSourceBuilder.url("jdbc:mysql://localhost:3306/oldagemanagement?createDatabaseIfNotExist=true");
+		}
+		dataSourceBuilder.username("oldagemanagement");
+		dataSourceBuilder.password("oldAgePass");
+		return dataSourceBuilder.build();
 	}
 
 }
