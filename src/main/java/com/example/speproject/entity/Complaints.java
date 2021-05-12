@@ -19,8 +19,7 @@ public class Complaints {
     private boolean open;
 
 
-    public Complaints(int id, String detail, boolean open) {
-        this.id = id;
+    public Complaints(String detail, boolean open) {
         this.detail = detail;
         this.open = open;
     }

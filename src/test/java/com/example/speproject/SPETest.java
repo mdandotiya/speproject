@@ -11,6 +11,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 
 @RunWith(SpringRunner.class)
@@ -31,6 +32,9 @@ public class SPETest {
 
     @Autowired
     private AttendentDao attendentDao;
+
+    @Autowired
+    private ComplaintsDao complaintsDao;
 
 
     @Test
@@ -122,6 +126,27 @@ public class SPETest {
         Assert.assertFalse(attendentDao.findById(attendentList.get(0).getId()).isPresent());
     }
 
+    @Test
+    public void updateComplaintTest(){
+        Optional<Complaints> complaints = complaintsDao.findById(1);
+        Complaints complaints1 = complaints.get();
+        complaints1.setDetail("Internet of Third Floor not working");
+        complaintsDao.save(complaints1);
+        Assert.assertEquals(complaintsDao.findById(1).get(),complaints1);
+    }
 
+    @Test
+    public void deleteComplaintTest(){
+        Complaints complaints = new Complaints("Third floor TV Not Working",true);
+        complaintsDao.save(complaints);
+        List<Complaints> complaintsList = new ArrayList<>();
+        int id =0;
+        for(int i=0;i<complaintsList.size();i++){
+            if(complaintsList.get(i).getDetail()==complaints.getDetail()){
+                id = complaintsList.get(i).getId();
+            }
+        }
+        Assert.assertFalse(complaintsDao.findById(id).isPresent());
+    }
 
 }
