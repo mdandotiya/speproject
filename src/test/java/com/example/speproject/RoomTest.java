@@ -17,7 +17,6 @@ import java.util.List;
 @SpringBootTest(classes = RoomTest.class)
 public class RoomTest {
 
-    @Autowired
     private RoomDao roomDao;
 
     @Test
