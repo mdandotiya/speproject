@@ -44,6 +44,6 @@ public class RoomTest {
         room.setId(16);
         roomDao.save(room);
         roomDao.deleteById(16);
-        Assert.assertNotNull(roomDao.findById(16));
+        Assert.assertNull(roomDao.findById(16));
     }
 }
