@@ -26,8 +26,10 @@ public class Attendent implements Serializable {
     private String gender;
 
 
-    public Attendent(String name) {
+    public Attendent(String name, int age, String gender) {
         this.name = name;
+        this.age = age;
+        this.gender = gender;
     }
 
     public Attendent() {

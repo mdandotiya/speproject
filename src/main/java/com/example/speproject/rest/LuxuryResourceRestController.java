@@ -1,5 +1,6 @@
 package com.example.speproject.rest;
 
+import com.example.speproject.JSONEntity.AssignResourceJson;
 import com.example.speproject.entity.HealthEquipment;
 import com.example.speproject.entity.Luxuryresource;
 import com.example.speproject.service.LuxuryResourceService;
@@ -31,5 +32,11 @@ public class LuxuryResourceRestController {
     public Optional<Luxuryresource> addEquipment(@RequestBody Luxuryresource luxuryresource){
         luxuryresource.setId(0);
         return luxuryResourceService.addResource(luxuryresource);
+    }
+
+    @CrossOrigin(origins = "http://localhost:3000")
+    @PostMapping(path="/resourceassign",consumes = "application/JSON")
+    public Optional<Luxuryresource> assignEquipment(@RequestBody AssignResourceJson assignResourceJson){
+        return luxuryResourceService.assignResource(assignResourceJson);
     }
 }
