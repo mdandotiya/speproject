@@ -34,7 +34,7 @@ public class RoomTest {
     @Test
     public void should_find_All_Rooms(){
         List<Room> rooms = roomDao.findAll();
-        int noOfRooms = 4;
+        int noOfRooms = 11;
         Assert.assertEquals(noOfRooms,rooms.size());
     }
 
