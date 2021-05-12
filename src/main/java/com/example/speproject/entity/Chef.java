@@ -18,8 +18,9 @@ public class Chef {
     @ManyToOne(fetch = FetchType.EAGER)
     private Food food;
 
-    public Chef(String name) {
+    public Chef(String name, Food food) {
         this.name = name;
+        this.food = food;
     }
 
     public Chef() {

@@ -1,9 +1,7 @@
 package com.example.speproject;
 
-import com.example.speproject.dao.CleaningStaffDao;
-import com.example.speproject.dao.RoomDao;
-import com.example.speproject.entity.CleaningStaff;
-import com.example.speproject.entity.Room;
+import com.example.speproject.dao.*;
+import com.example.speproject.entity.*;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -11,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -23,6 +22,12 @@ public class SPETest {
 
     @Autowired
     private CleaningStaffDao cleaningStaffDao;
+
+    @Autowired
+    private ChefDao chefDao;
+
+    @Autowired
+    private FoodDao foodDao;
 
     @Test
     public void should_find_All_Rooms(){
@@ -69,6 +74,21 @@ public class SPETest {
         }
         Assert.assertFalse(cleaningStaffDao.findById(id).isPresent());
     }
+
+    @Test
+    public void saveChefTest(){
+        List<Food> foods = foodDao.findAll();
+        Chef chef = new Chef("Pavan Kumar",foods.get(0));
+        chefDao.save(chef);
+        List<Chef> chefs = chefDao.findAll();
+        for(int i=0;i<chefs.size();i++){
+            if(chefs.get(i).getName()==chef.getName()){
+                chef.setId(chefs.get(i).getId());
+            }
+        }
+        Assert.assertTrue(chefDao.findById(chef.getId()).isPresent());
+    }
+
 
 
 }
