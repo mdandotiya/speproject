@@ -36,6 +36,7 @@ public class SpeprojectApplication {
 		bean.setOrder(Ordered.HIGHEST_PRECEDENCE);
 		return bean;
 	}
+
 	@Bean
 	public DataSource getDataSource() {
 		DataSourceBuilder dataSourceBuilder = DataSourceBuilder.create();
@@ -47,7 +48,7 @@ public class SpeprojectApplication {
 			dataSourceBuilder.url("jdbc:mysql://localhost:3306/oldagemanagement?createDatabaseIfNotExist=true");
 		}
 		dataSourceBuilder.username("oldagemanagement");
-		dataSourceBuilder.password("oldAgePass");
+		dataSourceBuilder.password("oldAgePass@11");
 		return dataSourceBuilder.build();
 	}
 

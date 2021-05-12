@@ -1,6 +1,7 @@
 package com.example.speproject.configuration;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
@@ -14,17 +15,17 @@ import java.util.Properties;
 @Configuration
 @EnableTransactionManagement
 public class HibernateConfiguration {
-    @Value("${db.driver}")
-    private String DRIVER;
-
-    @Value("${db.password}")
-    private String PASSWORD;
-
-    @Value("${db.url}")
-    private String URL;
-
-    @Value("${db.username}")
-    private String USERNAME;
+//    @Value("${db.driver}")
+//    private String DRIVER;
+//
+//    @Value("${db.password}")
+//    private String PASSWORD;
+//
+//    @Value("${db.url}")
+//    private String URL;
+//
+//    @Value("${db.username}")
+//    private String USERNAME;
 
     @Value("${hibernate.dialect}")
     private String DIALECT;
@@ -38,15 +39,15 @@ public class HibernateConfiguration {
     @Value("${entitymanager.packagesToScan}")
     private String PACKAGES_TO_SCAN;
 
-    @Bean
-    public DataSource dataSource() {
-        DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName(DRIVER);
-        dataSource.setUrl(URL);
-        dataSource.setUsername(USERNAME);
-        dataSource.setPassword(PASSWORD);
-        return dataSource;
-    }
+//    @Bean
+//    public DataSource dataSource() {
+//        DriverManagerDataSource dataSource = new DriverManagerDataSource();
+//        dataSource.setDriverClassName(DRIVER);
+//        dataSource.setUrl(URL);
+//        dataSource.setUsername(USERNAME);
+//        dataSource.setPassword(PASSWORD);
+//        return dataSource;
+//    }
 
     @Bean(name="entityManagerFactory")
     public LocalSessionFactoryBean sessionFactory() {
@@ -67,5 +68,20 @@ public class HibernateConfiguration {
         HibernateTransactionManager transactionManager = new HibernateTransactionManager();
         transactionManager.setSessionFactory(sessionFactory().getObject());
         return transactionManager;
+    }
+
+    @Bean
+    public DataSource dataSource() {
+        DataSourceBuilder dataSourceBuilder = DataSourceBuilder.create();
+        dataSourceBuilder.driverClassName("com.mysql.cj.jdbc.Driver");
+        String url = System.getenv("DATABASE_HOST");
+        if(url !=null){
+            dataSourceBuilder.url("jdbc:mysql://mysql-db-oldage:3306/oldagemanagement?createDatabaseIfNotExist=true?useSSL=false&allowPublicKeyRetrieval=true&autoReconnect=true&failOverReadOnly=false&maxReconnects=10");
+        }else{
+            dataSourceBuilder.url("jdbc:mysql://localhost:3306/oldagemanagement?createDatabaseIfNotExist=true");
+        }
+        dataSourceBuilder.username("oldagemanagement");
+        dataSourceBuilder.password("oldAgePass@11");
+        return dataSourceBuilder.build();
     }
 }
