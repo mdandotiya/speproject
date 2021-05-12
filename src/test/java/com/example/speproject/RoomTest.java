@@ -32,7 +32,7 @@ public class RoomTest {
         room.setId(5);
         roomDao.save(room);
         roomDao.delete(room);
-        Assert.assertNull(roomDao.findById(5));
+        Assert.assertFalse(roomDao.findById(5).isPresent());
     }
 
 }
