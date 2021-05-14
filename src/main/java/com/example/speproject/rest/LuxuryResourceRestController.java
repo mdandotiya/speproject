@@ -15,6 +15,7 @@ import java.util.Optional;
 @CrossOrigin
 @RestController
 @RequestMapping("/api")
+@CrossOrigin(origins = "*")
 public class LuxuryResourceRestController {
     private static Logger logger = LoggerFactory.getLogger(LuxuryResourceRestController.class);
     LuxuryResourceService luxuryResourceService;
@@ -24,7 +25,7 @@ public class LuxuryResourceRestController {
         this.luxuryResourceService = luxuryResourceService;
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+ //   @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/luxuryResources")
     public List<Luxuryresource> getAll(){
         logger.info("[Number of Luxury Resources] - "+luxuryResourceService.findAll().size());
@@ -33,7 +34,7 @@ public class LuxuryResourceRestController {
 
 
     //    @CrossOrigin(origins = "http://localhost:3000")
-    @CrossOrigin(origins = "*")
+//    @CrossOrigin(origins = "*")
     @PostMapping(path="/resource",consumes = "application/JSON")
     public Optional<Luxuryresource> addEquipment(@RequestBody Luxuryresource luxuryresource){
         luxuryresource.setId(0);
@@ -42,7 +43,7 @@ public class LuxuryResourceRestController {
 
 
     //    @CrossOrigin(origins = "http://localhost:3000")
-    @CrossOrigin(origins = "*")
+  //  @CrossOrigin(origins = "*")
     @PostMapping(path="/resourceassign",consumes = "application/JSON")
     public Optional<Luxuryresource> assignEquipment(@RequestBody AssignResourceJson assignResourceJson){
         return luxuryResourceService.assignResource(assignResourceJson);

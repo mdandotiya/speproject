@@ -15,6 +15,7 @@ import java.util.List;
 @CrossOrigin
 @RestController
 @RequestMapping("/api")
+@CrossOrigin(origins = "*")
 public class CabServiceRestController {
 
     CabServiceService cabServiceService;
@@ -26,7 +27,7 @@ public class CabServiceRestController {
 
 
     //    @CrossOrigin(origins = "http://localhost:3000")
-    @CrossOrigin(origins = "*")
+ //   @CrossOrigin(origins = "*")
     @GetMapping("/cabService")
     public List<CabService> getCabServices(){
         return cabServiceService.listAllCabServices();
@@ -34,7 +35,6 @@ public class CabServiceRestController {
 
 
     //    @CrossOrigin(origins = "http://localhost:3000")
-    @CrossOrigin(origins = "*")
     @PostMapping(path = "/cabService",consumes = "application/JSON")
     public CabService addService(@RequestBody CabServiceJson cabServiceJson){
         cabServiceJson.setId(0);

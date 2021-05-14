@@ -14,6 +14,7 @@ import java.util.List;
 @CrossOrigin
 @RestController
 @RequestMapping("/api")
+@CrossOrigin(origins = "*")
 public class HospitalsRestController {
     private static Logger logger = LoggerFactory.getLogger(HospitalsRestController.class);
     private HospitalsService hospitalsService;
@@ -25,7 +26,7 @@ public class HospitalsRestController {
 
 
     //    @CrossOrigin(origins = "http://localhost:3000")
-    @CrossOrigin(origins = "*")
+  //  @CrossOrigin(origins = "*")
     @GetMapping("/hospitals")
     public List<Hospitals> getHospitals(){
         logger.info("[Number of Hospitals] - "+hospitalsService.listAllHospitals().size());
@@ -34,7 +35,7 @@ public class HospitalsRestController {
 
 
     //    @CrossOrigin(origins = "http://localhost:3000")
-    @CrossOrigin(origins = "*")
+ //   @CrossOrigin(origins = "*")
     @GetMapping("/hospitals/{hospitalId}")
     public Hospitals getHospitalsById(@PathVariable int hospitalId){
         Hospitals theHospital;
@@ -49,7 +50,7 @@ public class HospitalsRestController {
 
 
     //    @CrossOrigin(origins = "http://localhost:3000")
-    @CrossOrigin(origins = "*")
+ //   @CrossOrigin(origins = "*")
     @PostMapping(path = "/hospitals",consumes = "application/JSON")
     public Hospitals addHospital(@RequestBody Hospitals hospitals){
         hospitals.setId(0);

@@ -13,6 +13,7 @@ import java.util.List;
 @CrossOrigin
 @RestController
 @RequestMapping("/api")
+@CrossOrigin(origins = "*")
 public class HealthcareRestController {
 
     private static Logger logger = LoggerFactory.getLogger(HealthcareRestController.class);
@@ -26,7 +27,7 @@ public class HealthcareRestController {
 
 
     //    @CrossOrigin(origins = "http://localhost:3000")
-    @CrossOrigin(origins = "*")
+  //  @CrossOrigin(origins = "*")
     @PostMapping("/healthcare")
     public List<Healthcare> save(@RequestBody HealthcareJson healthcareJson){
         healthcareService.addHealth(healthcareJson);

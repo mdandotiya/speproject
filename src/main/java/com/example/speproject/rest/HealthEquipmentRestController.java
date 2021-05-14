@@ -14,6 +14,7 @@ import java.util.Optional;
 @CrossOrigin
 @RestController
 @RequestMapping("/api")
+@CrossOrigin(origins = "*")
 public class HealthEquipmentRestController {
     private static Logger logger = LoggerFactory.getLogger(HealthEquipmentRestController.class);
     HealthEquipmentService healthEquipmentService;
@@ -24,7 +25,7 @@ public class HealthEquipmentRestController {
 
 
     //    @CrossOrigin(origins = "http://localhost:3000")
-    @CrossOrigin(origins = "*")
+ //   @CrossOrigin(origins = "*")
     @GetMapping("/healthEquipment")
     public List<HealthEquipment> getAll(){
         logger.info("[Number of Health Equipments] - "+healthEquipmentService.findAll().size());
@@ -33,7 +34,7 @@ public class HealthEquipmentRestController {
 
 
     //    @CrossOrigin(origins = "http://localhost:3000")
-    @CrossOrigin(origins = "*")
+  //  @CrossOrigin(origins = "*")
     @PostMapping(path="/equipment",consumes = "application/JSON")
     public Optional<HealthEquipment> addEquipment(@RequestBody HealthEquipment healthEquipment){
         healthEquipment.setId(0);
@@ -42,7 +43,7 @@ public class HealthEquipmentRestController {
 
 
     //    @CrossOrigin(origins = "http://localhost:3000")
-    @CrossOrigin(origins = "*")
+  //  @CrossOrigin(origins = "*")
     @PostMapping(path="/equipmentassign",consumes = "application/JSON")
     public Optional<HealthEquipment> addEquipment(@RequestBody AssignEquipmentJson assignEquipmentJson){
         return healthEquipmentService.assignEquipment(assignEquipmentJson);

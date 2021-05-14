@@ -16,6 +16,7 @@ import java.util.List;
 @CrossOrigin
 @RestController
 @RequestMapping("/api")
+@CrossOrigin(origins = "*")
 public class DoctorRestController {
 
     private static Logger logger = LoggerFactory.getLogger(DoctorRestController.class);
@@ -29,7 +30,7 @@ public class DoctorRestController {
 
 
     //    @CrossOrigin(origins = "http://localhost:3000")
-    @CrossOrigin(origins = "*")
+ //   @CrossOrigin(origins = "*")
     @GetMapping("/doctor")
     public List<Doctor> findAll(){
         logger.info("[Number of Doctors] - "+doctorService.findAll().size());

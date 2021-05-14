@@ -15,6 +15,7 @@ import java.util.List;
 @CrossOrigin
 @RestController
 @RequestMapping("/api")
+@CrossOrigin(origins = "*")
 public class NGORestController {
     private static Logger logger = LoggerFactory.getLogger(NGORestController.class);
     private NGOService ngoService;
@@ -26,7 +27,7 @@ public class NGORestController {
 
 
     //    @CrossOrigin(origins = "http://localhost:3000")
-    @CrossOrigin(origins = "*")
+  //  @CrossOrigin(origins = "*")
     @GetMapping("/ngo")
     public List<Ngo> getAll(){
         logger.info("[Number of Ngos] - "+ngoService.findAll().size());
@@ -34,7 +35,7 @@ public class NGORestController {
     }
 
 
-    @CrossOrigin(origins = "http://localhost:3000")
+  //  @CrossOrigin(origins = "http://localhost:3000")
     @DeleteMapping(value = "/NGOdel/{id}")
     public ResponseEntity<HttpStatus> deletePost(@PathVariable int id) {
         try {
@@ -46,7 +47,7 @@ public class NGORestController {
         }
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+//    @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping(path = "/ngo",consumes = "application/JSON")
     public Ngo addNgo(@RequestBody Ngo ngo){
         ngo.setId(0);

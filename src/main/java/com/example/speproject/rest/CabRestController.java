@@ -15,6 +15,7 @@ import java.util.List;
 @CrossOrigin
 @RestController
 @RequestMapping("/api")
+@CrossOrigin(origins = "*")
 public class CabRestController {
 
     private static Logger logger = LoggerFactory.getLogger(CabRestController.class);
