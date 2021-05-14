@@ -14,7 +14,6 @@ import java.util.Optional;
 @CrossOrigin
 @RestController
 @RequestMapping("/api")
-@CrossOrigin(origins = "*")
 public class HealthEquipmentRestController {
     private static Logger logger = LoggerFactory.getLogger(HealthEquipmentRestController.class);
     HealthEquipmentService healthEquipmentService;

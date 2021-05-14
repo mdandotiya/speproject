@@ -15,7 +15,6 @@ import java.util.Optional;
 @CrossOrigin
 @RestController
 @RequestMapping("/api")
-@CrossOrigin(origins = "*")
 public class LuxuryResourceRestController {
     private static Logger logger = LoggerFactory.getLogger(LuxuryResourceRestController.class);
     LuxuryResourceService luxuryResourceService;
