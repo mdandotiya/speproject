@@ -20,13 +20,17 @@ public class ChefRestController {
         this.chefService = chefService;
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+
+    //    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "*")
     @GetMapping("/chef")
     public List<Chef> getAll(){
         return chefService.findAll();
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+
+    //    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "*")
     @PostMapping(path = "/chef",consumes = "application/JSON")
     public Chef addChef(@RequestBody ChefJson chef){
         chef.setId(0);

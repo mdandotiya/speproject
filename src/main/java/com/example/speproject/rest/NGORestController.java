@@ -21,7 +21,9 @@ public class NGORestController {
         this.ngoService = ngoService;
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+
+    //    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "*")
     @GetMapping("/ngo")
     public List<Ngo> getAll(){
         return ngoService.findAll();

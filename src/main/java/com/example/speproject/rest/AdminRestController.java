@@ -19,7 +19,8 @@ public class AdminRestController {
         this.adminService = adminService1;
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+//    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "*")
     @GetMapping("/admin")
     public Admin getAdmin(){
         return adminService.findByusername();

@@ -22,7 +22,9 @@ public class DoctorRestController {
         this.doctorService = doctorService;
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+
+    //    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "*")
     @GetMapping("/doctor")
     public List<Doctor> findAll(){
         return doctorService.findAll();

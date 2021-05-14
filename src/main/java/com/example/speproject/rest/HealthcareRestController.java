@@ -19,7 +19,9 @@ public class HealthcareRestController {
         this.healthcareService = healthcareService;
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+
+    //    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "*")
     @PostMapping("/healthcare")
     public List<Healthcare> save(@RequestBody HealthcareJson healthcareJson){
         healthcareService.addHealth(healthcareJson);

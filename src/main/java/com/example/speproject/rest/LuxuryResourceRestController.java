@@ -27,14 +27,18 @@ public class LuxuryResourceRestController {
         return luxuryResourceService.findAll();
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+
+    //    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "*")
     @PostMapping(path="/resource",consumes = "application/JSON")
     public Optional<Luxuryresource> addEquipment(@RequestBody Luxuryresource luxuryresource){
         luxuryresource.setId(0);
         return luxuryResourceService.addResource(luxuryresource);
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+
+    //    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "*")
     @PostMapping(path="/resourceassign",consumes = "application/JSON")
     public Optional<Luxuryresource> assignEquipment(@RequestBody AssignResourceJson assignResourceJson){
         return luxuryResourceService.assignResource(assignResourceJson);

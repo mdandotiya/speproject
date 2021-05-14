@@ -21,7 +21,9 @@ public class CabRestController {
         this.cabService = cabService;
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+
+    //    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "*")
     @GetMapping("/cab")
     public List<Cab> findAll(){
         return cabService.findAll();

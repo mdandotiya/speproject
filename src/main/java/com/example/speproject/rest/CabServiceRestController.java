@@ -21,13 +21,17 @@ public class CabServiceRestController {
         this.cabServiceService = cabServiceService;
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+
+    //    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "*")
     @GetMapping("/cabService")
     public List<CabService> getCabServices(){
         return cabServiceService.listAllCabServices();
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+
+    //    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "*")
     @PostMapping(path = "/cabService",consumes = "application/JSON")
     public CabService addService(@RequestBody CabServiceJson cabServiceJson){
         cabServiceJson.setId(0);

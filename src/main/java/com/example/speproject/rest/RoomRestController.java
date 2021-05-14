@@ -17,13 +17,17 @@ public class RoomRestController {
         this.roomService = roomService;
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+
+    //    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "*")
     @GetMapping("/room")
     public List<Room> getAll(){
         return roomService.findAll();
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+
+    //    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "*")
     @PostMapping(path="/room",consumes = "application/JSON")
     public Optional<Room> addRoom(@RequestBody Room room){
         room.setId(0);

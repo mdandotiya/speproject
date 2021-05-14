@@ -31,13 +31,17 @@ public class ComplaintStaffRestController {
         this.complaintStaffService = complaintStaffService;
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+
+    //    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "*")
     @GetMapping("/complaintStaff")
     public List<ComplaintStaff> findAll(){
         return complaintStaffService.findAll();
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+
+    //    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "*")
     @GetMapping("/complaint")
     public List<ComplaintJson> findComplaints(){
         List<Complaints> complaints =  complaintStaffService.findComplaints();
@@ -48,7 +52,9 @@ public class ComplaintStaffRestController {
         return complaintJsons;
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+
+    //    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "*")
     @PostMapping(path = "/staff",consumes = "application/JSON")
     public ComplaintStaff addStaff(@RequestBody ComplaintStaffJson complaintStaffJson){
         complaintStaffService.save(complaintStaffJson);

@@ -19,13 +19,17 @@ public class HospitalsRestController {
         this.hospitalsService = theHospitalsService;
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+
+    //    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "*")
     @GetMapping("/hospitals")
     public List<Hospitals> getHospitals(){
         return hospitalsService.listAllHospitals();
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+
+    //    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "*")
     @GetMapping("/hospitals/{hospitalId}")
     public Hospitals getHospitalsById(@PathVariable int hospitalId){
         Hospitals theHospital;
@@ -38,7 +42,9 @@ public class HospitalsRestController {
         return theHospital;
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+
+    //    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "*")
     @PostMapping(path = "/hospitals",consumes = "application/JSON")
     public Hospitals addHospital(@RequestBody Hospitals hospitals){
         hospitals.setId(0);
