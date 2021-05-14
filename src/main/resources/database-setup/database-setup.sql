@@ -6,7 +6,7 @@ SET GLOBAL validate_password.mixed_case_count=0;
 SET GLOBAL validate_password_mixed_case_count=0;
 SET GLOBAL validate_password.special_char_count=0;
 SET GLOBAL validate_password_special_char_count=0;
-CREATE USER 'oldagemanagement'@'localhost' IDENTIFIED BY 'oldAgePass';
+CREATE USER 'oldagemanagement'@'localhost' IDENTIFIED BY 'oldAgePass@11';
 create database oldagemanagement;
 GRANT ALL PRIVILEGES ON oldagemanagement.* TO 'oldagemanagement'@'localhost';
 FLUSH PRIVILEGES;

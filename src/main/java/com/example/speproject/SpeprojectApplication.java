@@ -28,7 +28,9 @@ public class SpeprojectApplication {
 		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
 		CorsConfiguration config = new CorsConfiguration();
 		config.setAllowCredentials(true);
-		config.setAllowedOrigins(Arrays.asList("http://localhost:3000"));
+// 		config.setAllowedOrigins(Arrays.asList("http://localhost:3000"));
+// 		config.setAllowedOrigins(Arrays.asList("*"));
+// 		config.setAllowedOrigins("*");
 		config.setAllowedMethods(Collections.singletonList("*"));
 		config.setAllowedHeaders(Collections.singletonList("*"));
 		source.registerCorsConfiguration("/**", config);
@@ -36,6 +38,7 @@ public class SpeprojectApplication {
 		bean.setOrder(Ordered.HIGHEST_PRECEDENCE);
 		return bean;
 	}
+
 	@Bean
 	public DataSource getDataSource() {
 		DataSourceBuilder dataSourceBuilder = DataSourceBuilder.create();
@@ -47,7 +50,7 @@ public class SpeprojectApplication {
 			dataSourceBuilder.url("jdbc:mysql://localhost:3306/oldagemanagement?createDatabaseIfNotExist=true");
 		}
 		dataSourceBuilder.username("oldagemanagement");
-		dataSourceBuilder.password("oldAgePass");
+		dataSourceBuilder.password("oldAgePass@11");
 		return dataSourceBuilder.build();
 	}
 
