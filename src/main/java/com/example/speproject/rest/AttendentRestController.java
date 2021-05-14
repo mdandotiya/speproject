@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api")
 public class AttendentRestController {
@@ -25,14 +26,14 @@ public class AttendentRestController {
 
 
     //    @CrossOrigin(origins = "http://localhost:3000")
-    @CrossOrigin(origins = "*")
+//    @CrossOrigin(origins = "*")
     @GetMapping("/attendent")
     public List<Attendent> getAll(){
         logger.info("[Number of Attendents] - "+attendentService.findAll().size());
         return attendentService.findAll();
     }
 
-    @CrossOrigin(origins = "*")
+//    @CrossOrigin(origins = "*")
     @PostMapping(path = "/attendent",consumes = "application/JSON")
     public Attendent addAttendent(@RequestBody  Attendent attendent){
         attendent.setId(0);

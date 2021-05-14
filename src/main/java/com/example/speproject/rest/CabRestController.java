@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api")
 public class CabRestController {
@@ -28,7 +29,7 @@ public class CabRestController {
 
 
     //    @CrossOrigin(origins = "http://localhost:3000")
-    @CrossOrigin(origins = "*")
+//    @CrossOrigin(origins = "*")
     @GetMapping("/cab")
     public List<Cab> findAll(){
         logger.info("[Number of Cabs] - "+cabService.findAll().size());
