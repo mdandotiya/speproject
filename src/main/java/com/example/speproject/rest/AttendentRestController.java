@@ -12,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api")
+@CrossOrigin(origins = "*")
 public class AttendentRestController {
 
     private static Logger logger = LoggerFactory.getLogger(AttendentRestController.class);
@@ -25,14 +26,14 @@ public class AttendentRestController {
 
 
     //    @CrossOrigin(origins = "http://localhost:3000")
-    @CrossOrigin(origins = "*")
+  //  @CrossOrigin(origins = "*")
     @GetMapping("/attendent")
     public List<Attendent> getAll(){
         logger.info("[Number of Attendents] - "+attendentService.findAll().size());
         return attendentService.findAll();
     }
 
-    @CrossOrigin(origins = "*")
+   // @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping(path = "/attendent",consumes = "application/JSON")
     public Attendent addAttendent(@RequestBody  Attendent attendent){
         attendent.setId(0);

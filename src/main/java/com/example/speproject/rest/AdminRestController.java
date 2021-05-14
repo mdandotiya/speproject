@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api")
+@CrossOrigin(origins = "*")
 public class AdminRestController {
     private AdminService adminService;
 
@@ -20,7 +21,7 @@ public class AdminRestController {
     }
 
 //    @CrossOrigin(origins = "http://localhost:3000")
-    @CrossOrigin(origins = "*")
+//    @CrossOrigin(origins = "*")
     @GetMapping("/admin")
     public Admin getAdmin(){
         return adminService.findByusername();

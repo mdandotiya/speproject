@@ -2,6 +2,7 @@ package com.example.speproject;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.ScopeMetadata;
@@ -16,28 +17,28 @@ import javax.sql.DataSource;
 import java.util.Arrays;
 import java.util.Collections;
 
-@SpringBootApplication
+@SpringBootApplication(exclude = HibernateJpaAutoConfiguration.class)
 public class SpeprojectApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(SpeprojectApplication.class, args);
 	}
 
-// 	@Bean
-// 	public FilterRegistrationBean<CorsFilter> simpleCorsFilter() {
-// 		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-// 		CorsConfiguration config = new CorsConfiguration();
-//  		config.setAllowCredentials(true);
-//  // 		config.setAllowedOrigins(Arrays.asList("http://localhost:3000"));
-//  		config.setAllowedOrigins(Arrays.asList("http://172.17.0.2:80"));
-//  // 		config.setAllowedOrigins("*");
-//  		config.setAllowedMethods(Collections.singletonList("*"));
-//  		config.setAllowedHeaders(Collections.singletonList("*"));
-// 		source.registerCorsConfiguration("/**", config);
-// 		FilterRegistrationBean<CorsFilter> bean = new FilterRegistrationBean<>(new CorsFilter(source));
-// 		bean.setOrder(Ordered.HIGHEST_PRECEDENCE);
-// 		return bean;
-// 	}
+/*	@Bean
+	public FilterRegistrationBean<CorsFilter> simpleCorsFilter() {
+		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+		CorsConfiguration config = new CorsConfiguration();
+		config.setAllowCredentials(true);
+// 		config.setAllowedOrigins(Arrays.asList("http://localhost:3000"));
+		config.setAllowedOrigins(Arrays.asList("http://localhost:3000","http://172.17.0.2/80"));
+// 		config.setAllowedOrigins("*");
+		config.setAllowedMethods(Collections.singletonList("*"));
+		config.setAllowedHeaders(Collections.singletonList("*"));
+		source.registerCorsConfiguration("/**", config);
+		FilterRegistrationBean<CorsFilter> bean = new FilterRegistrationBean<>(new CorsFilter(source));
+		bean.setOrder(Ordered.HIGHEST_PRECEDENCE);
+		return bean;
+	}*/
 
 	@Bean
 	public DataSource getDataSource() {

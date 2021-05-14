@@ -16,6 +16,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api")
+@CrossOrigin(origins = "*")
 public class ComplaintStaffRestController {
 
     private static Logger logger = LoggerFactory.getLogger(ComplaintStaffRestController.class);
@@ -30,7 +31,7 @@ public class ComplaintStaffRestController {
 
 
     //    @CrossOrigin(origins = "http://localhost:3000")
-    @CrossOrigin(origins = "*")
+ //   @CrossOrigin(origins = "*")
     @GetMapping("/complaintStaff")
     public List<ComplaintStaff> findAll(){
         logger.info("[Number of Complaint Staff] - "+complaintStaffService.findAll().size());
@@ -39,7 +40,7 @@ public class ComplaintStaffRestController {
 
 
     //    @CrossOrigin(origins = "http://localhost:3000")
-    @CrossOrigin(origins = "*")
+ //   @CrossOrigin(origins = "*")
     @GetMapping("/complaint")
     public List<ComplaintJson> findComplaints(){
         List<Complaints> complaints =  complaintStaffService.findComplaints();
@@ -53,7 +54,7 @@ public class ComplaintStaffRestController {
 
 
     //    @CrossOrigin(origins = "http://localhost:3000")
-    @CrossOrigin(origins = "*")
+ //   @CrossOrigin(origins = "*")
     @PostMapping(path = "/staff",consumes = "application/JSON")
     public ComplaintStaff addStaff(@RequestBody ComplaintStaffJson complaintStaffJson){
         logger.info("[Complaint Staff Open Complaints] - "+complaintStaffJson.getOpenComplaints());

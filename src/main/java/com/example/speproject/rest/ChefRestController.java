@@ -13,6 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api")
+@CrossOrigin(origins = "*")
 public class ChefRestController {
     private static Logger logger = LoggerFactory.getLogger(ChefRestController.class);
 
@@ -25,7 +26,7 @@ public class ChefRestController {
 
 
     //    @CrossOrigin(origins = "http://localhost:3000")
-    @CrossOrigin(origins = "*")
+  //  @CrossOrigin(origins = "*")
     @GetMapping("/chef")
     public List<Chef> getAll(){
         logger.info("[Number of Chefs] - "+chefService.findAll().size());
@@ -34,7 +35,7 @@ public class ChefRestController {
 
 
     //    @CrossOrigin(origins = "http://localhost:3000")
-    @CrossOrigin(origins = "*")
+ //   @CrossOrigin(origins = "*")
     @PostMapping(path = "/chef",consumes = "application/JSON")
     public Chef addChef(@RequestBody ChefJson chef){
         chef.setId(0);

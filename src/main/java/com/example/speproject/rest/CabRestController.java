@@ -14,6 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api")
+@CrossOrigin(origins = "*")
 public class CabRestController {
 
     private static Logger logger = LoggerFactory.getLogger(CabRestController.class);
@@ -28,7 +29,7 @@ public class CabRestController {
 
 
     //    @CrossOrigin(origins = "http://localhost:3000")
-    @CrossOrigin(origins = "*")
+//    @CrossOrigin(origins = "*")
     @GetMapping("/cab")
     public List<Cab> findAll(){
         logger.info("[Number of Cabs] - "+cabService.findAll().size());

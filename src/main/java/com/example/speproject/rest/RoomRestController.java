@@ -11,6 +11,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api")
+@CrossOrigin(origins = "*")
 public class RoomRestController {
     private static Logger logger = LoggerFactory.getLogger(RoomRestController.class);
     RoomService roomService;
@@ -21,7 +22,7 @@ public class RoomRestController {
 
 
     //    @CrossOrigin(origins = "http://localhost:3000")
-    @CrossOrigin(origins = "*")
+ //   @CrossOrigin(origins = "*")
     @GetMapping("/room")
     public List<Room> getAll(){
         logger.info("[Number of Rooms] - "+roomService.findAll().size());
@@ -30,7 +31,7 @@ public class RoomRestController {
 
 
     //    @CrossOrigin(origins = "http://localhost:3000")
-    @CrossOrigin(origins = "*")
+ //   @CrossOrigin(origins = "*")
     @PostMapping(path="/room",consumes = "application/JSON")
     public Optional<Room> addRoom(@RequestBody Room room){
         room.setId(0);

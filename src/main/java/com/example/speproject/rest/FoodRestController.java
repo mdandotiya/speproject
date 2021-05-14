@@ -13,6 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api")
+@CrossOrigin(origins = "*")
 public class FoodRestController {
 
     private static Logger logger = LoggerFactory.getLogger(FoodRestController.class);
@@ -26,7 +27,7 @@ public class FoodRestController {
 
 
     //    @CrossOrigin(origins = "http://localhost:3000")
-    @CrossOrigin(origins = "*")
+  //  @CrossOrigin(origins = "*")
     @GetMapping("/food")
     public List<Food> findAll(){
         logger.info("[Number of Types Of Food] - "+foodService.findAll().size());
@@ -35,7 +36,7 @@ public class FoodRestController {
 
 
     //    @CrossOrigin(origins = "http://localhost:3000")
-    @CrossOrigin(origins = "*")
+ //   @CrossOrigin(origins = "*")
     @PostMapping(path = "/food",consumes = "application/JSON")
     public Food addFod(@RequestBody Food food){
         food.setId(0);
