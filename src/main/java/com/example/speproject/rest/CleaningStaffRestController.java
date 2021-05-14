@@ -20,13 +20,17 @@ public class CleaningStaffRestController {
         this.cleaningStaffService = cleaningStaffService;
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+
+    //    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "*")
     @GetMapping("/cleaningStaff")
     public List<CleaningStaff> findAll(){
         return cleaningStaffService.findAll();
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+
+    //    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "*")
     @PostMapping(path = "/cleaner",consumes = "application/JSON")
     public CleaningStaff addCleaner(@RequestBody CleaningStaff cleaningStaff){
         cleaningStaff.setId(0);

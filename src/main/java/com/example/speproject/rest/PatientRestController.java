@@ -22,14 +22,18 @@ public class PatientRestController {
         this.patientService = patientService;
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+
+    //    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "*")
     @GetMapping("/patient")
     public List<Patient> getAll(){
         return patientService.findAll();
     }
 
 
-    @CrossOrigin(origins = "http://localhost:3000")
+
+    //    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "*")
     @DeleteMapping(value = "/patientdel/{id}")
     public ResponseEntity<HttpStatus> deletePost(@PathVariable int id) {
         try {
@@ -41,7 +45,9 @@ public class PatientRestController {
             }
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+
+    //    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "*")
     @PostMapping(path = "/patient",consumes = "application/JSON")
     public Patient addPatient(@RequestBody Patient patient){
         patient.setId(0);
@@ -50,7 +56,9 @@ public class PatientRestController {
         return patient;
     }
 
-    @CrossOrigin(origins="http://localhost:3000")
+
+    //    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "*")
     @PutMapping("/patient")
     public Patient updatePatient(@RequestBody Patient patient){
         return patientService.updatePatient(patient);
@@ -58,19 +66,25 @@ public class PatientRestController {
     }
 
 
-    @CrossOrigin(origins = "http://localhost:3000")
+
+    //    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "*")
     @GetMapping("/patientById/{id}")
     public Optional<Patient> getPatient(@PathVariable int id){
         return patientService.getPatient(id);
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+
+    //    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "*")
     @GetMapping("/patientByAttendentId/{id}")
     public List<Patient> getPatientByAttendent(@PathVariable int id){
         return patientService.getPatientByAttendent(id);
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+
+    //    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "*")
     @GetMapping("/patientByRoomId/{id}")
     public Patient getPatientByRoom(@PathVariable int id){
         return patientService.getPatientByRoom(id);

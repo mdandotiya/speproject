@@ -19,7 +19,9 @@ public class AttendentRestController {
         this.attendentService = attendentService;
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+
+    //    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "*")
     @GetMapping("/attendent")
     public List<Attendent> getAll(){
         return attendentService.findAll();

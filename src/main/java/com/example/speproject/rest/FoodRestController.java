@@ -20,13 +20,17 @@ public class FoodRestController {
         this.foodService = foodService;
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+
+    //    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "*")
     @GetMapping("/food")
     public List<Food> findAll(){
         return foodService.findAll();
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+
+    //    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "*")
     @PostMapping(path = "/food",consumes = "application/JSON")
     public Food addFod(@RequestBody Food food){
         food.setId(0);
