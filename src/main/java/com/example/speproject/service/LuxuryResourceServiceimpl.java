@@ -38,9 +38,15 @@ public class LuxuryResourceServiceimpl implements LuxuryResourceService{
     public Optional<Luxuryresource> assignResource(AssignResourceJson assignResourceJson) {
         Luxuryresource luxuryresource = assignResourceJson.getResource();
         Patient patient = assignResourceJson.getPatient();
-        List<Patient> patientList = new ArrayList<>();
+        List<Patient> patientList = luxuryResourceDao.findById(luxuryresource.getId()).get().getPatients();
         patientList.add(patient);
-        luxuryresource.setPatients(patientList);
+        List<Patient> patientList1 = new ArrayList<>();
+        for(int i=0;i<patientList.size();i++){
+            if(!(patientList1.contains(patientList.get(i)))){
+                patientList1.add(patientList.get(i));
+            }
+        }
+        luxuryresource.setPatients(patientList1);
         luxuryResourceDao.save(luxuryresource);
         return Optional.empty();
     }

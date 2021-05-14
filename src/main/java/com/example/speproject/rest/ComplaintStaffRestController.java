@@ -20,9 +20,6 @@ public class ComplaintStaffRestController {
 
     private static Logger logger = LoggerFactory.getLogger(ComplaintStaffRestController.class);
 
-    public void log(){
-        logger.info("log4j is work");
-    }
 
     ComplaintStaffService complaintStaffService;
 
@@ -36,6 +33,7 @@ public class ComplaintStaffRestController {
     @CrossOrigin(origins = "*")
     @GetMapping("/complaintStaff")
     public List<ComplaintStaff> findAll(){
+        logger.info("[Number of Complaint Staff] - "+complaintStaffService.findAll().size());
         return complaintStaffService.findAll();
     }
 
@@ -45,6 +43,7 @@ public class ComplaintStaffRestController {
     @GetMapping("/complaint")
     public List<ComplaintJson> findComplaints(){
         List<Complaints> complaints =  complaintStaffService.findComplaints();
+        logger.info("[Number of Complaints] - "+complaintStaffService.findComplaints().size());
         List<ComplaintJson> complaintJsons = new ArrayList<>();
         for(int i=0;i<complaints.size();i++){
             complaintJsons.add(new ComplaintJson(complaints.get(i).getId(),complaints.get(i).getDetail()));
@@ -57,6 +56,7 @@ public class ComplaintStaffRestController {
     @CrossOrigin(origins = "*")
     @PostMapping(path = "/staff",consumes = "application/JSON")
     public ComplaintStaff addStaff(@RequestBody ComplaintStaffJson complaintStaffJson){
+        logger.info("[Complaint Staff Open Complaints] - "+complaintStaffJson.getOpenComplaints());
         complaintStaffService.save(complaintStaffJson);
         return null;
     }

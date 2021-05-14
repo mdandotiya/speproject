@@ -5,6 +5,8 @@ import com.example.speproject.entity.CabService;
 import com.example.speproject.entity.Hospitals;
 import com.example.speproject.entity.Patient;
 import com.example.speproject.service.CabServiceService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

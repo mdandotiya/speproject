@@ -22,7 +22,8 @@ public class Doctor {
     private Hospitals hospitals;
 
     @OneToMany(fetch = FetchType.EAGER)
-    private List<Date> dates;
+    private List<Date> dateList;
+
 
     public Doctor() {
     }
@@ -31,7 +32,7 @@ public class Doctor {
         this.name = name;
         Specialization = specialization;
         this.hospitals = hospitals;
-        this.dates = dates;
+        this.dateList = dates;
     }
 
     public int getId() {
@@ -67,10 +68,10 @@ public class Doctor {
     }
 
     public List<Date> getDates() {
-        return dates;
+        return dateList;
     }
 
     public void setDates(List<Date> dates) {
-        this.dates = dates;
+        this.dateList = dates;
     }
 }

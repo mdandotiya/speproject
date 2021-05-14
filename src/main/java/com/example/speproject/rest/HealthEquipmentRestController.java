@@ -4,6 +4,8 @@ import com.example.speproject.JSONEntity.AssignEquipmentJson;
 import com.example.speproject.entity.HealthEquipment;
 import com.example.speproject.entity.Room;
 import com.example.speproject.service.HealthEquipmentService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,7 +14,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api")
 public class HealthEquipmentRestController {
-
+    private static Logger logger = LoggerFactory.getLogger(HealthEquipmentRestController.class);
     HealthEquipmentService healthEquipmentService;
 
     public HealthEquipmentRestController(HealthEquipmentService healthEquipmentService) {
@@ -24,6 +26,7 @@ public class HealthEquipmentRestController {
     @CrossOrigin(origins = "*")
     @GetMapping("/healthEquipment")
     public List<HealthEquipment> getAll(){
+        logger.info("[Number of Health Equipments] - "+healthEquipmentService.findAll().size());
         return healthEquipmentService.findAll();
     }
 

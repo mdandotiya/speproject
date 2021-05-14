@@ -4,6 +4,8 @@ import com.example.speproject.JSONEntity.AssignResourceJson;
 import com.example.speproject.entity.HealthEquipment;
 import com.example.speproject.entity.Luxuryresource;
 import com.example.speproject.service.LuxuryResourceService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,7 +15,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api")
 public class LuxuryResourceRestController {
-
+    private static Logger logger = LoggerFactory.getLogger(LuxuryResourceRestController.class);
     LuxuryResourceService luxuryResourceService;
 
     @Autowired
@@ -24,6 +26,7 @@ public class LuxuryResourceRestController {
     @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/luxuryResources")
     public List<Luxuryresource> getAll(){
+        logger.info("[Number of Luxury Resources] - "+luxuryResourceService.findAll().size());
         return luxuryResourceService.findAll();
     }
 

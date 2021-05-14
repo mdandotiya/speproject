@@ -16,27 +16,47 @@ public class Healthcare implements Serializable {
     private int id;
 
     @Column
-    private double Hemoglobin;
+    private String Hemoglobin;
 
     @Column
-    private double Bloodpressure;
+    private String Bloodpressure;
 
     @Column
-    private double Sugar;
+    private String Sugar;
 
     @Column
-    private double Cholestrol;
+    private String Cholestrol;
 
     @Column
-    private double Uricacid;
+    private String Uricacid;
+
+    @Column
+    private int hasLegProblem;
+
+    @Column
+    private int hasVisionProblem;
+
+    @Column
+    private int hasHearingProblem;
+
+    @Column
+    private int hasHeartProblem;
+
+    @Column
+    private int isClaustrophobic;
 
 
-    public Healthcare(double hemoglobin, double bloodpressure, double sugar, double cholestrol, double uricacid) {
+    public Healthcare(String hemoglobin, String bloodpressure, String sugar, String cholestrol, String uricacid, int hasLegProblem, int hasVisionProblem, int hasHearingProblem, int hasHeartProblem, int isClaustrophobic) {
         Hemoglobin = hemoglobin;
         Bloodpressure = bloodpressure;
         Sugar = sugar;
         Cholestrol = cholestrol;
         Uricacid = uricacid;
+        this.hasLegProblem = hasLegProblem;
+        this.hasVisionProblem = hasVisionProblem;
+        this.hasHearingProblem = hasHearingProblem;
+        this.hasHeartProblem = hasHeartProblem;
+        this.isClaustrophobic = isClaustrophobic;
     }
 
     public Healthcare() {
@@ -51,43 +71,83 @@ public class Healthcare implements Serializable {
         this.id = id;
     }
 
-    public double getHemoglobin() {
+    public String getHemoglobin() {
         return Hemoglobin;
     }
 
-    public void setHemoglobin(double hemoglobin) {
+    public void setHemoglobin(String hemoglobin) {
         Hemoglobin = hemoglobin;
     }
 
-    public double getBloodpressure() {
+    public String getBloodpressure() {
         return Bloodpressure;
     }
 
-    public void setBloodpressure(double bloodpressure) {
+    public void setBloodpressure(String bloodpressure) {
         Bloodpressure = bloodpressure;
     }
 
-    public double getSugar() {
+    public String getSugar() {
         return Sugar;
     }
 
-    public void setSugar(double sugar) {
+    public void setSugar(String sugar) {
         Sugar = sugar;
     }
 
-    public double getCholestrol() {
+    public String getCholestrol() {
         return Cholestrol;
     }
 
-    public void setCholestrol(double cholestrol) {
+    public void setCholestrol(String cholestrol) {
         Cholestrol = cholestrol;
     }
 
-    public double getUricacid() {
+    public String getUricacid() {
         return Uricacid;
     }
 
-    public void setUricacid(double uricacid) {
+    public void setUricacid(String uricacid) {
         Uricacid = uricacid;
+    }
+
+    public int getHasLegProblem() {
+        return hasLegProblem;
+    }
+
+    public void setHasLegProblem(int hasLegProblem) {
+        this.hasLegProblem = hasLegProblem;
+    }
+
+    public int getHasVisionProblem() {
+        return hasVisionProblem;
+    }
+
+    public void setHasVisionProblem(int hasVisionProblem) {
+        this.hasVisionProblem = hasVisionProblem;
+    }
+
+    public int getHasHearingProblem() {
+        return hasHearingProblem;
+    }
+
+    public void setHasHearingProblem(int hasHearingProblem) {
+        this.hasHearingProblem = hasHearingProblem;
+    }
+
+    public int getHasHeartProblem() {
+        return hasHeartProblem;
+    }
+
+    public void setHasHeartProblem(int hasHeartProblem) {
+        this.hasHeartProblem = hasHeartProblem;
+    }
+
+    public int getIsClaustrophobic() {
+        return isClaustrophobic;
+    }
+
+    public void setIsClaustrophobic(int isClaustrophobic) {
+        this.isClaustrophobic = isClaustrophobic;
     }
 }

@@ -2,6 +2,8 @@ package com.example.speproject.rest;
 
 import com.example.speproject.entity.Cab;
 import com.example.speproject.service.CabService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,7 +16,10 @@ import java.util.List;
 @RequestMapping("/api")
 public class CabRestController {
 
+    private static Logger logger = LoggerFactory.getLogger(CabRestController.class);
+
     CabService cabService;
+
 
     @Autowired
     public CabRestController(CabService cabService) {
@@ -26,6 +31,7 @@ public class CabRestController {
     @CrossOrigin(origins = "*")
     @GetMapping("/cab")
     public List<Cab> findAll(){
+        logger.info("[Number of Cabs] - "+cabService.findAll().size());
         return cabService.findAll();
     }
 }

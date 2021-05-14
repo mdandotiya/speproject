@@ -3,6 +3,8 @@ package com.example.speproject.rest;
 import com.example.speproject.entity.Ngo;
 import com.example.speproject.entity.Patient;
 import com.example.speproject.service.NGOService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,7 +15,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api")
 public class NGORestController {
-
+    private static Logger logger = LoggerFactory.getLogger(NGORestController.class);
     private NGOService ngoService;
 
     @Autowired
@@ -26,6 +28,7 @@ public class NGORestController {
     @CrossOrigin(origins = "*")
     @GetMapping("/ngo")
     public List<Ngo> getAll(){
+        logger.info("[Number of Ngos] - "+ngoService.findAll().size());
         return ngoService.findAll();
     }
 
@@ -46,6 +49,7 @@ public class NGORestController {
     @PostMapping(path = "/ngo",consumes = "application/JSON")
     public Ngo addNgo(@RequestBody Ngo ngo){
         ngo.setId(0);
+        logger.info("[NGO Name] - "+ngo.getName()+"[Fund Raised] - "+ngo.getRaisedFunds());
         ngoService.save(ngo);
         return ngo;
     }

@@ -4,6 +4,8 @@ import com.example.speproject.JSONEntity.ChefJson;
 import com.example.speproject.entity.Chef;
 import com.example.speproject.entity.Food;
 import com.example.speproject.service.FoodService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,6 +14,8 @@ import java.util.List;
 @RestController
 @RequestMapping("/api")
 public class FoodRestController {
+
+    private static Logger logger = LoggerFactory.getLogger(FoodRestController.class);
 
     FoodService foodService;
 
@@ -25,6 +29,7 @@ public class FoodRestController {
     @CrossOrigin(origins = "*")
     @GetMapping("/food")
     public List<Food> findAll(){
+        logger.info("[Number of Types Of Food] - "+foodService.findAll().size());
         return foodService.findAll();
     }
 

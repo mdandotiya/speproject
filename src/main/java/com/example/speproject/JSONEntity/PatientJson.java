@@ -5,6 +5,7 @@ import com.example.speproject.entity.Healthcare;
 import com.example.speproject.entity.Room;
 
 import javax.persistence.Column;
+import java.util.List;
 
 public class PatientJson {
 
@@ -15,16 +16,21 @@ public class PatientJson {
     private String contact;
     private Attendent attendent;
     private Room room;
-    private HealthcareJson healthcareJson;
+    private Healthcare healthcare;
+    private List<String> dates;
 
-    public PatientJson(String name, String gender, int age, String contact, Attendent attendent, Room room, HealthcareJson healthcareJson) {
+    public PatientJson() {
+    }
+
+    public PatientJson(String name, String gender, int age, String contact, Attendent attendent, Room room, Healthcare healthcare, List<String> dates) {
         this.name = name;
         this.gender = gender;
         this.age = age;
         this.contact = contact;
         this.attendent = attendent;
         this.room = room;
-        this.healthcareJson = healthcareJson;
+        this.healthcare = healthcare;
+        this.dates = dates;
     }
 
     public int getId() {
@@ -83,12 +89,20 @@ public class PatientJson {
         this.room = room;
     }
 
-    public HealthcareJson getHealthcareJson() {
-        return healthcareJson;
+    public Healthcare getHealthcare() {
+        return healthcare;
     }
 
-    public void setHealthcareJson(HealthcareJson healthcareJson) {
-        this.healthcareJson = healthcareJson;
+    public void setHealthcare(Healthcare healthcare) {
+        this.healthcare = healthcare;
+    }
+
+    public List<String> getDates() {
+        return dates;
+    }
+
+    public void setDates(List<String> dates) {
+        this.dates = dates;
     }
 }
 

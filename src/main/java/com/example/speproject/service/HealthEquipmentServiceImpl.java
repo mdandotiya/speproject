@@ -38,7 +38,7 @@ public class HealthEquipmentServiceImpl implements HealthEquipmentService{
         healthEquipment.setId(assignEquipmentJson.getHealthEquipment().getId());
         healthEquipment.setAvailability(assignEquipmentJson.getHealthEquipment().getAvailability());
         healthEquipment.setName(assignEquipmentJson.getHealthEquipment().getName());
-        List<Attendent> attendentList = new ArrayList<>();
+        List<Attendent> attendentList = healthEquipmentDao.findById(healthEquipment.getId()).get().getAttendents();
         attendentList.add(assignEquipmentJson.getAttendent());
         healthEquipment.setAttendents(attendentList);
         healthEquipmentDao.save(healthEquipment);

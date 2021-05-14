@@ -29,6 +29,9 @@ public class Patient implements Serializable {
     @Column
     private String contact;
 
+    @Column
+    private int doctor_id;
+
     @ManyToOne
     private Attendent attendent;
 
@@ -39,16 +42,23 @@ public class Patient implements Serializable {
     private Healthcare healthcare;
 
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     private List<Date> dates;
+
+
 
     public Patient(){}
 
-    public Patient(String name, String gender, int age, String contact) {
+    public Patient(String name, String gender, int age, String contact, Attendent attendent, Room room, Healthcare healthcare, List<Date> dates, int doctor_id) {
         this.name = name;
         this.gender = gender;
         this.age = age;
         this.contact = contact;
+        this.attendent = attendent;
+        this.room = room;
+        this.healthcare = healthcare;
+        this.dates = dates;
+        this.doctor_id=doctor_id;
     }
 
     public int getId() {
@@ -123,4 +133,19 @@ public class Patient implements Serializable {
         this.healthcare = healthcare;
     }
 
+    public List<Date> getDates() {
+        return dates;
+    }
+
+    public void setDates(List<Date> dates) {
+        this.dates = dates;
+    }
+
+    public int getDoctor_id() {
+        return doctor_id;
+    }
+
+    public void setDoctor_id(int doctor_id) {
+        this.doctor_id = doctor_id;
+    }
 }

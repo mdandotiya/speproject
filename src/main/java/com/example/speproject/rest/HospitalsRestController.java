@@ -4,6 +4,8 @@ import com.example.speproject.entity.Admin;
 import com.example.speproject.entity.Hospitals;
 import com.example.speproject.entity.Patient;
 import com.example.speproject.service.HospitalsService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,6 +14,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api")
 public class HospitalsRestController {
+    private static Logger logger = LoggerFactory.getLogger(HospitalsRestController.class);
     private HospitalsService hospitalsService;
 
     @Autowired
@@ -24,6 +27,7 @@ public class HospitalsRestController {
     @CrossOrigin(origins = "*")
     @GetMapping("/hospitals")
     public List<Hospitals> getHospitals(){
+        logger.info("[Number of Hospitals] - "+hospitalsService.listAllHospitals().size());
         return hospitalsService.listAllHospitals();
     }
 
@@ -48,6 +52,7 @@ public class HospitalsRestController {
     @PostMapping(path = "/hospitals",consumes = "application/JSON")
     public Hospitals addHospital(@RequestBody Hospitals hospitals){
         hospitals.setId(0);
+        logger.info("[Hospital Name] - "+hospitals.getName()+"[Fee per Visit] - "+hospitals.getFeePerVisit());
         hospitalsService.save(hospitals);
         return hospitals;
     }
