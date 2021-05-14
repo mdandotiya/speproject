@@ -29,7 +29,7 @@ public class SpeprojectApplication {
 		CorsConfiguration config = new CorsConfiguration();
 		config.setAllowCredentials(true);
 // 		config.setAllowedOrigins(Arrays.asList("http://localhost:3000"));
-		config.setAllowedOrigins(Arrays.asList("*"));
+		config.setAllowedOrigins(Arrays.asList("http://localhost:3000","http://172.17.0.2/80"));
 // 		config.setAllowedOrigins("*");
 		config.setAllowedMethods(Collections.singletonList("*"));
 		config.setAllowedHeaders(Collections.singletonList("*"));
