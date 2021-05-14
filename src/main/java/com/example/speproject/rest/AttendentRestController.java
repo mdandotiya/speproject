@@ -32,7 +32,7 @@ public class AttendentRestController {
         return attendentService.findAll();
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "*")
     @PostMapping(path = "/attendent",consumes = "application/JSON")
     public Attendent addAttendent(@RequestBody  Attendent attendent){
         attendent.setId(0);

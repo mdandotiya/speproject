@@ -29,7 +29,7 @@ public class PatientRestController {
         this.patientService = patientService;
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "*")
     @GetMapping("/patient")
     public List<Patient> getAll(){
         logger.info("[Number of Patients] - "+patientService.findAll().size());
@@ -37,7 +37,7 @@ public class PatientRestController {
     }
 
 
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "*")
     @DeleteMapping(value = "/patientdel/{id}")
     public ResponseEntity<HttpStatus> deletePost(@PathVariable int id) {
         try {
@@ -49,14 +49,17 @@ public class PatientRestController {
             }
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+//    @CrossOrigin(origins = "http://localhost:3000")
+
+    @CrossOrigin(origins = "*")
     @PostMapping(path = "/patient",consumes = "application/JSON")
     public Date addPatient(@RequestBody Patient patient){
         patientService.save(patient);
         return null;
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "*")
+//    @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping(path = "/date",consumes = "application/JSON")
     public Date addDate(@RequestBody PatientJson patientJson){
         logger.info("[Number of Days people are keeping fast] - "+patientJson.getDates().size());
@@ -64,7 +67,8 @@ public class PatientRestController {
         return null;
     }
 
-    @CrossOrigin(origins="http://localhost:3000")
+    @CrossOrigin(origins = "*")
+//    @CrossOrigin(origins="http://localhost:3000")
     @PutMapping("/patient")
     public Patient updatePatient(@RequestBody Patient patient){
         return patientService.updatePatient(patient);
@@ -72,25 +76,30 @@ public class PatientRestController {
     }
 
 
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "*")
+//    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/patientById/{id}")
     public Optional<Patient> getPatient(@PathVariable int id){
         return patientService.getPatient(id);
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+
+    @CrossOrigin(origins = "*")
+//    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/patientByAttendentId/{id}")
     public List<Patient> getPatientByAttendent(@PathVariable int id){
         return patientService.getPatientByAttendent(id);
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "*")
+//    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/patientByRoomId/{id}")
     public Patient getPatientByRoom(@PathVariable int id){
         return patientService.getPatientByRoom(id);
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+//    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "*")
     @PostMapping(path = "/addHealth",consumes = "application/JSON")
     public Healthcare addHealth(@RequestBody String result){
         patientService.saveHealth(result);
