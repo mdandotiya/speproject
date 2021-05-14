@@ -12,7 +12,6 @@ import java.util.Optional;
 @CrossOrigin
 @RestController
 @RequestMapping("/api")
-@CrossOrigin(origins = "*")
 public class RoomRestController {
     private static Logger logger = LoggerFactory.getLogger(RoomRestController.class);
     RoomService roomService;

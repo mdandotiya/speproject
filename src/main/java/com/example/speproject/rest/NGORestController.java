@@ -15,7 +15,6 @@ import java.util.List;
 @CrossOrigin
 @RestController
 @RequestMapping("/api")
-@CrossOrigin(origins = "*")
 public class NGORestController {
     private static Logger logger = LoggerFactory.getLogger(NGORestController.class);
     private NGOService ngoService;
