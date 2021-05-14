@@ -27,12 +27,12 @@ public class SpeprojectApplication {
 	public FilterRegistrationBean<CorsFilter> simpleCorsFilter() {
 		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
 		CorsConfiguration config = new CorsConfiguration();
-		config.setAllowCredentials(true);
-// 		config.setAllowedOrigins(Arrays.asList("http://localhost:3000"));
-		config.setAllowedOrigins(Arrays.asList("http://localhost:3000","http://172.17.0.2/80"));
-// 		config.setAllowedOrigins("*");
-		config.setAllowedMethods(Collections.singletonList("*"));
-		config.setAllowedHeaders(Collections.singletonList("*"));
+// 		config.setAllowCredentials(true);
+// // 		config.setAllowedOrigins(Arrays.asList("http://localhost:3000"));
+// 		config.setAllowedOrigins(Arrays.asList("http://localhost:3000","http://172.17.0.2/80"));
+// // 		config.setAllowedOrigins("*");
+// 		config.setAllowedMethods(Collections.singletonList("*"));
+// 		config.setAllowedHeaders(Collections.singletonList("*"));
 		source.registerCorsConfiguration("/**", config);
 		FilterRegistrationBean<CorsFilter> bean = new FilterRegistrationBean<>(new CorsFilter(source));
 		bean.setOrder(Ordered.HIGHEST_PRECEDENCE);
